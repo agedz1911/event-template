@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+Route::get('/', [MainController::class, 'index']);
+Route::get('/congress-information', [MainController::class, 'congressInfo']);
+Route::get('/scientific-program', [MainController::class, 'scientificProgram']);
+Route::get('/registration', [MainController::class, 'registration']);
+Route::get('/submission', [MainController::class, 'submission']);
