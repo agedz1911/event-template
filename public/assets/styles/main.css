@@ -29,6 +29,15 @@
     position: relative;
     background-position: center center;
 }
+.bg-half {
+    padding: 184px 0 90px;
+    background-size: cover;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    position: relative;
+    background-position: center center;
+}
 
 .bg-gradient-blue {
     background-image: url(../images/bg2.png),
@@ -86,6 +95,184 @@
     .shape {
         bottom: -4px;
     }
+}
+
+.page-next-level .title {
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.page-next-level .page-next {
+    position: relative;
+    top: 110px;
+    z-index: 99;
+}
+
+@media (max-width: 768px) {
+    .page-next-level .page-next {
+        top: 70px;
+    }
+}
+
+.title-heading {
+    line-height: 26px;
+}
+
+.title-heading .heading {
+    font-size: 45px !important;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .title-heading .heading {
+        font-size: 35px !important;
+    }
+}
+
+.title-heading .para-desc {
+    font-size: 18px;
+}
+
+.breadcrumb {
+    letter-spacing: 0.5px;
+    padding: 8px 24px;
+    display: block;
+}
+
+.breadcrumb .breadcrumb-item {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    padding-left: 0;
+    display: inline-block;
+}
+
+.breadcrumb .breadcrumb-item a {
+    color: #3c4858;
+}
+
+.breadcrumb .breadcrumb-item a:hover {
+    color: #2f55d4;
+}
+
+.breadcrumb .breadcrumb-item.active {
+    color: #2f55d4;
+}
+
+.breadcrumb .breadcrumb-item:before {
+    content: "";
+}
+
+.breadcrumb .breadcrumb-item:after {
+    /* content: "\F0142" !important; */
+    font-size: 14px;
+    color: #3c4858;
+    font-family: "Material Design Icons";
+    padding-left: 5px;
+}
+
+.breadcrumb .breadcrumb-item:last-child:after {
+    display: none;
+}
+
+.breadcrumb .breadcrumb-item a {
+    color: #ffffff;
+}
+
+.breadcrumb .breadcrumb-item:after {
+    color: #ffffff;
+}
+
+.avatar.avatar-md {
+    height: 150px;
+}
+
+.avatar.avatar-ex-sm {
+    max-height: 75px;
+}
+
+.avatar.avatar-ex-large {
+    height: 180px;
+    width: 180px;
+}
+
+.key-feature {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.key-feature .icon {
+    background: linear-gradient(45deg, transparent, rgba(47, 85, 212, 0.15));
+}
+
+.key-feature:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-box-shadow: 0 5px 13px rgba(60, 72, 88, 0.2) !important;
+    box-shadow: 0 5px 13px rgba(60, 72, 88, 0.2) !important;
+}
+
+.pricing-rates {
+    position: relative;
+    z-index: 1;
+    border-bottom: 3px solid #adb5bd !important;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.pricing-rates .price {
+    font-weight: 400;
+}
+
+.pricing-rates.business-rate:hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    z-index: 2;
+    border-color: #2f55d4 !important;
+    -webkit-box-shadow: 0 5px 13px rgba(60, 72, 88, 0.2) !important;
+    box-shadow: 0 5px 13px rgba(60, 72, 88, 0.2) !important;
+    background-color: #ffffff !important;
+}
+
+.pricing-rates.business-rate:hover .title {
+    color: #2f55d4;
+}
+
+.pricing-rates.starter-plan {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    z-index: 2;
+    border-color: #2f55d4 !important;
+}
+
+@media (max-width: 767px) {
+    .pricing-rates.starter-plan {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.pricing-rates.best-plan:hover {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+
+.pricing-rates.business-rate:hover {
+    background-color: #141414 !important;
+}
+
+.pricing-rates.business-rate:hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    z-index: 2;
+    border-color: #2f55d4 !important;
+    -webkit-box-shadow: 0 5px 13px rgba(60, 72, 88, 0.2) !important;
+    box-shadow: 0 5px 13px rgba(60, 72, 88, 0.2) !important;
+    background-color: #ffffff !important;
+}
+
+.pricing-rates.business-rate:hover .title {
+    color: #2f55d4;
 }
 
 .footer {
