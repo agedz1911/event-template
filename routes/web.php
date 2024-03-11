@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,14 @@ Route::get('/congress-information', [MainController::class, 'congressInfo']);
 Route::get('/scientific-program', [MainController::class, 'scientificProgram']);
 Route::get('/registration', [MainController::class, 'registration']);
 Route::get('/submission', [MainController::class, 'submission']);
+
+// Route::get('/dashboard/admin', function () {
+//     return view('dashboard.admin.home');
+// });
+Route::prefix('/dashboard/admin')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'index']);
+    Route::get('/user-register', [AdminDashboardController::class, 'userRegister']);
+    Route::get('/user-role', [AdminDashboardController::class, 'role'] );
+    Route::get('/important-dates', [AdminDashboardController::class, 'importantDates'] );
+    Route::get('/faculties', [AdminDashboardController::class, 'faculties'] );
+});
