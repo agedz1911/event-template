@@ -30,7 +30,10 @@ Route::get('/submission', [MainController::class, 'submission']);
 Route::prefix('/dashboard/admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index']);
     Route::get('/user-register', [AdminDashboardController::class, 'userRegister']);
-    Route::get('/user-role', [AdminDashboardController::class, 'role'] );
-    Route::get('/important-dates', [AdminDashboardController::class, 'importantDates'] );
-    Route::get('/faculties', [AdminDashboardController::class, 'faculties'] );
+    Route::get('/user-role', [AdminDashboardController::class, 'role']);
+    Route::get('/important-dates', [AdminDashboardController::class, 'importantDates']);
+    Route::post('/storeImportantDates', [AdminDashboardController::class, 'storeImportantDates']);
+    Route::delete('/delete_importantDate/{id}', [AdminDashboardController::class, 'delete_importantDate']);
+    Route::get('/faculties', [AdminDashboardController::class, 'faculties']);
+    Route::post('/storeFaculties', [AdminDashboardController::class, 'storeFaculties']);
 });
