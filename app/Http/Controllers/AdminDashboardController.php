@@ -29,10 +29,11 @@ class AdminDashboardController extends Controller
         $keyword = $request->keyword;
         //dd($keyword);
         $important_dates = ImportantDate::where('title', 'LIKE', '%' . $keyword . '%')->paginate(20);
+        $deleted_dates = ImportantDate::onlyTrashed()->get();
         $title = 'Delete Data!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
-        return view('dashboard.admin.pages.importantDates', ['important_dates' => $important_dates]);
+        return view('dashboard.admin.pages.importantDates', ['important_dates' => $important_dates, 'deleted_dates' => $deleted_dates]);
     }
 
     public function storeImportantDates(Request $request)
@@ -55,11 +56,35 @@ class AdminDashboardController extends Controller
         return redirect()->back();
     }
 
-    public function faculties()
+    public function restore_importantDate($id)
     {
+        ImportantDate::withTrashed()->where('id', $id)->restore();
+        Alert::success('Succesfully!', 'Important Date has been restored');
+        return redirect()->back();
+    }
+
+    public function edit_importantDate(Request $request, $id)
+    {
+        $data = ImportantDate::findOrFail($id);
+        $data->title = $request->title;
+        $data->date = $request->date;
+
+        $data->save();
+        Alert::success('Succesfully!', 'Important Date has been updated');
+        return redirect()->back();
+    }
+
+    public function faculties(Request $request)
+    {
+        $keyword = $request->keyword;
         $countries = countries();
-        $faculties = Faculty::paginate(15);
-        return view('dashboard.admin.pages.faculties', compact('countries', 'faculties'));
+        $faculties = Faculty::where('name', 'LIKE', '%' . $keyword . '%')->paginate(15);
+        $deleted_faculty = Faculty::onlyTrashed()->get();
+
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+        return view('dashboard.admin.pages.faculties', compact('countries', 'faculties', 'deleted_faculty'));
     }
 
     public function storeFaculties(Request $request)
@@ -83,4 +108,20 @@ class AdminDashboardController extends Controller
         Alert::success('Done!', 'Faculty Created Success');
         return redirect()->back();
     }
+
+    public function delete_faculty($id)
+    {
+        $faculty = Faculty::findOrFail($id);
+        $faculty->delete();
+        Alert::success('Succesfully!', 'Important Date has been deleted');
+        return redirect()->back();
+    }
+
+    public function restore_faculty($id)
+    {
+        Faculty::withTrashed()->where('id', $id)->restore();
+        Alert::success('Succesfully!', 'Important Date has been restored');
+        return redirect()->back();
+    }
+    
 }
