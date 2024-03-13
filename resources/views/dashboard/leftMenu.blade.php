@@ -48,7 +48,7 @@
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:void(0)" class="menu-link">
+                            <a href="/dashboard/admin/schedule" class="menu-link">
                                 <span class="menu-text">Schedule</span>
                             </a>
                         </li>

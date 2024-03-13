@@ -123,5 +123,9 @@ class AdminDashboardController extends Controller
         Alert::success('Succesfully!', 'Important Date has been restored');
         return redirect()->back();
     }
-    
+
+    public function schedules()
+    {
+        return view('dashboard.admin.pages.schedule');
+    }
 }

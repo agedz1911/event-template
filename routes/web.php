@@ -39,4 +39,5 @@ Route::prefix('/dashboard/admin')->group(function () {
     Route::post('/storeFaculties', [AdminDashboardController::class, 'storeFaculties']);
     Route::delete('/delete_faculty/{id}', [AdminDashboardController::class, 'delete_faculty']);
     Route::get('/faculties/{id}/restore', [AdminDashboardController::class, 'restore_faculty']);
+    Route::get('/schedule', [AdminDashboardController::class, 'schedules']);
 });
