@@ -35,9 +35,16 @@ Route::prefix('/dashboard/admin')->group(function () {
     Route::post('/storeImportantDates', [AdminDashboardController::class, 'storeImportantDates']);
     Route::delete('/delete_importantDate/{id}', [AdminDashboardController::class, 'delete_importantDate']);
     Route::get('/important-dates/{id}/restore', [AdminDashboardController::class, 'restore_importantDate']);
+    Route::get('/edit-important-dates/{id}', [AdminDashboardController::class, 'edit_importantDate']);
+    Route::put('/update_importantDate/{id}', [AdminDashboardController::class, 'update_importantDate']);
     Route::get('/faculties', [AdminDashboardController::class, 'faculties']);
     Route::post('/storeFaculties', [AdminDashboardController::class, 'storeFaculties']);
     Route::delete('/delete_faculty/{id}', [AdminDashboardController::class, 'delete_faculty']);
     Route::get('/faculties/{id}/restore', [AdminDashboardController::class, 'restore_faculty']);
+    Route::get('/edit_faculties/{id}', [AdminDashboardController::class, 'edit_faculties']);
+    Route::put('/update_faculties/{id}', [AdminDashboardController::class, 'update_faculties']);
     Route::get('/schedule', [AdminDashboardController::class, 'schedules']);
+    Route::post('/storeSchedule', [AdminDashboardController::class, 'storeSchedule']);
+    Route::delete('delete_schedule/{id}', [AdminDashboardController::class, 'delete_schedule']);
+    Route::get('/schedule/{id}/restore', [AdminDashboardController::class, 'restore_schedule']);
 });

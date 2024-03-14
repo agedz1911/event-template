@@ -50,10 +50,8 @@
                                 <td>{{\Carbon\Carbon::parse($item->date)->format('l, j F Y')}}</td>
                                 <td>
                                     <div>
-                                        <a href="{{url('/dashboard/admin/important-dates', $item->id)}}"
-                                            class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#edit-data"
-                                            data-bs-id="{{ $item->id }}" data-bs-title="{{ $item->title }}"
-                                            data-bs-date="{{ $item->date }}">Edit</a>
+                                        <a href="{{url('/dashboard/admin/edit-important-dates', $item->id)}}"
+                                            class="btn btn-secondary">Edit</a>
                                         <a href="{{url('/dashboard/admin/delete_importantDate', $item->id)}}"
                                             data-confirm-delete="true" class="btn btn-danger">Delete</a>
                                     </div>

@@ -297,7 +297,7 @@
                                     <div class="card-body">
                                         <div class="position-relative">
                                             @if ($international->image != null)
-                                            <img src="/images/faculty/{{$international->image}}"
+                                            <img src="assets/images/faculty/{{$international->image}}"
                                                 class="img-fluid avatar avatar-ex-large rounded-circle shadow"
                                                 alt="{{$international->name}}">
                                             @else
@@ -328,7 +328,7 @@
                                     <div class="card-body">
                                         <div class="position-relative">
                                             @if ($local->image != null)
-                                            <img src="/images/faculty/{{$local->image}}"
+                                            <img src="/assets/images/faculty/{{$local->image}}"
                                                 class="img-fluid avatar avatar-ex-large rounded-circle shadow"
                                                 alt="{{$local->name}}">
                                             @else

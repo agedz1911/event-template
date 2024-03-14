@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faculty;
 use App\Models\ImportantDate;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -63,7 +64,13 @@ class AdminDashboardController extends Controller
         return redirect()->back();
     }
 
-    public function edit_importantDate(Request $request, $id)
+    public function edit_importantDate($id)
+    {
+        $important_dates = ImportantDate::findOrFail($id);
+        return view('dashboard.admin.pages.editImportantDates', ['important_dates' => $important_dates]);
+        
+    }
+    public function update_importantDate(Request $request, $id)
     {
         $data = ImportantDate::findOrFail($id);
         $data->title = $request->title;
@@ -71,14 +78,14 @@ class AdminDashboardController extends Controller
 
         $data->save();
         Alert::success('Succesfully!', 'Important Date has been updated');
-        return redirect()->back();
+        return redirect()->to('/dashboard/admin/important-dates');
     }
 
     public function faculties(Request $request)
     {
         $keyword = $request->keyword;
         $countries = countries();
-        $faculties = Faculty::where('name', 'LIKE', '%' . $keyword . '%')->paginate(15);
+        $faculties = Faculty::where('name', 'LIKE', '%' . $keyword . '%')->with('schedule')->paginate(15);
         $deleted_faculty = Faculty::onlyTrashed()->get();
 
         $title = 'Delete Data!';
@@ -99,7 +106,7 @@ class AdminDashboardController extends Controller
 
         if ($image) {
             $imageName = $request->name . '.' . $image->getClientOriginalExtension();
-            $request->image->move('images/faculty', $imageName);
+            $request->image->move('assets/images/faculty', $imageName);
 
             $faculty->image = $imageName;
         }
@@ -124,8 +131,74 @@ class AdminDashboardController extends Controller
         return redirect()->back();
     }
 
+    public function edit_faculties($id)
+    {
+        $countries = countries();
+        $faculties = Faculty::findOrFail($id);
+        return view('dashboard.admin.pages.editFaculty', ['faculties' => $faculties, 'countries' => $countries]);
+        
+    }
+    public function update_faculties(Request $request, $id)
+    {
+        $data = Faculty::findOrFail($id);
+        $data->name = $request->name;
+        $data->country = $request->country;
+
+        $image = $request->image;
+
+        if ($image) {
+            $imageName = $request->name . '.' . $image->getClientOriginalExtension();
+            $request->image->move('assets/images/faculty', $imageName);
+
+            $data->image = $imageName;
+        }
+
+        $data->save();
+        Alert::success('Succesfully!', 'Faculty has been updated');
+        return redirect()->to('/dashboard/admin/faculties');
+    }
+
     public function schedules()
     {
-        return view('dashboard.admin.pages.schedule');
+        $faculties = Faculty::all();
+        $schedules = Schedule::with('faculty')->paginate(10);
+        $del_schedules = Schedule::onlyTrashed()->get();
+
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+        return view('dashboard.admin.pages.schedule', ['faculties' => $faculties, 'schedules' => $schedules, 'del_schedules' => $del_schedules]);
+    }
+
+    public function storeSchedule(Request $request)
+    {
+        $request->validate([
+            'date' => 'required',
+            'time' => 'required',
+            'title' => 'required',
+            'room' => 'required',
+            'faculty_id' => 'required',
+        ]);
+        // dd($request->all());
+        $schedule = new Schedule();
+        $schedule->create($request->all());
+        // $schedule->date = $request->date;
+        Alert::success('Succesfully!', 'Schedule has been created');
+        return redirect()->back();
+    }
+
+    public function delete_schedule($id)
+    {
+        $schedules = Schedule::findOrFail($id);
+        $schedules->delete();
+        Alert::success('Succesfully!', 'Schedule has been deleted');
+        return redirect()->back();
+    }
+
+    public function restore_schedule($id)
+    {
+        Schedule::withTrashed()->where('id', $id)->restore();
+        Alert::success('Succesfully!', 'Schedule has been restored');
+        return redirect()->back();
     }
 }
