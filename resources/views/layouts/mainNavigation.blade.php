@@ -1,4 +1,4 @@
-{{-- <div id="topnav" class="defaultscroll sticky-top">
+<div id="topnav" class="defaultscroll sticky-top">
     <div class="container">
         <!-- Logo container-->
         <a class="logo" href="/">
@@ -81,9 +81,9 @@
             <!--end login button-->
         </div><!--end navigation-->
     </div><!--end container-->
-</div><!--end header--> --}}
+</div><!--end header-->
 
-<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+{{-- <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
     <div class="container">
         <a class="navbar-brand" href="#">
             <img src="{{asset('assets/images/logo-dark.png')}}" class="l-dark" height="32" alt="">
@@ -109,20 +109,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/submission">Submission</a>
                 </li>
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li> --}}
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -130,4 +116,4 @@
             </form>
         </div>
     </div>
-</nav>
+</nav> --}}

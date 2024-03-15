@@ -15,11 +15,11 @@
                         <span class="text-primary">AESC 2024</span>
                     </p>
                     <div class="page-next">
-                        <nav aria-label="breadcrumb" class="d-inline-block bg-primary rounded px-4 py-2">
+                        <nav aria-label="breadcrumb" class="d-inline-block bg-white rounded" >
                             <ul class="breadcrumb rounded shadow mb-0">
-                                <li class="breadcrumb-item"><a href="#">AESC</a></li>
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item text-dark" aria-current="page">Congress Information</li>
+                                <li class="breadcrumb-item"><a href="#">KONAS XX</a></li>
+                                <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Informasi Kongress</li>
                             </ul>
                         </nav>
                     </div>

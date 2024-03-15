@@ -105,7 +105,8 @@ class AdminDashboardController extends Controller
         $image = $request->image;
 
         if ($image) {
-            $imageName = $request->name . '.' . $image->getClientOriginalExtension();
+            // $imageName = $request->name . '.' . $image->getClientOriginalExtension();
+            $imageName = str_replace(' ', '_', $request->name) . '.' . $image->getClientOriginalExtension();
             $request->image->move('assets/images/faculty', $imageName);
 
             $faculty->image = $imageName;
