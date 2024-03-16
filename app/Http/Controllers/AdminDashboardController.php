@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faculty;
 use App\Models\ImportantDate;
+use App\Models\Role;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -13,16 +14,6 @@ class AdminDashboardController extends Controller
     public function index()
     {
         return view('dashboard.admin.home');
-    }
-
-    public function userRegister()
-    {
-        return view('dashboard.admin.users.register');
-    }
-
-    public function role()
-    {
-        return view('dashboard.admin.users.role');
     }
 
     public function importantDates(Request $request)
