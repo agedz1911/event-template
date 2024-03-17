@@ -40,6 +40,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Updated</th>
                                 <th>Actions</th>
 
                             </tr>
@@ -52,8 +53,10 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->roles->name}}</td>
+                                <td>{{ \Carbon\Carbon::parse($user->updated_at)->diffForHumans()}}</td>
                                 <td>
-                                    <button class="btn btn-secondary">Edit</button>
+                                    <a href="{{url('/dashboard/admin/edit_user', $user->id)}}"
+                                        class="btn btn-secondary">Edit</a>
                                     <a href="{{url('/dashboard/admin/delete_user', $user->id)}}"
                                         data-confirm-delete="true" class="btn btn-danger">Delete</a>
                                 </td>

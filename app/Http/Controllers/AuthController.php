@@ -146,6 +146,22 @@ class AuthController extends Controller
         return redirect()->back();
     }
 
+    public function edit_user($id)
+    {
+        $users = User::with('roles')->findOrFail($id);
+        $roles = Role::where('id', '!=', $users->role_id)->where('name', '!=', 'superadmin')->get();
+        return view('dashboard.admin.users.editUser', compact('users', 'roles'));
+    }
+
+    public function update_user(Request $request, $id)
+    {
+        $users = User::findOrFail($id);
+        // dd($users);
+        $users->update($request->all());
+        Alert::success('Succesfully!', 'User has been updated');
+        return redirect()->to('/dashboard/admin/user-register');
+    }
+
     public function role()
     {
         $roles = Role::all();

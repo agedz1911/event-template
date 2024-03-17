@@ -58,7 +58,6 @@ class AdminDashboardController extends Controller
     {
         $important_dates = ImportantDate::findOrFail($id);
         return view('dashboard.admin.pages.editImportantDates', ['important_dates' => $important_dates]);
-        
     }
     public function update_importantDate(Request $request, $id)
     {
@@ -127,7 +126,6 @@ class AdminDashboardController extends Controller
         $countries = countries();
         $faculties = Faculty::findOrFail($id);
         return view('dashboard.admin.pages.editFaculty', ['faculties' => $faculties, 'countries' => $countries]);
-        
     }
     public function update_faculties(Request $request, $id)
     {
@@ -191,5 +189,21 @@ class AdminDashboardController extends Controller
         Schedule::withTrashed()->where('id', $id)->restore();
         Alert::success('Succesfully!', 'Schedule has been restored');
         return redirect()->back();
+    }
+
+    public function edit_schedule($id)
+    {
+        $schedules = Schedule::with('faculty')->findOrFail($id);
+        $faculties = Faculty::where('id', '!=', $schedules->faculty_id)->get();
+        return view('dashboard.admin.pages.editSchedule', compact('faculties', 'schedules'));
+    }
+
+    public function update_schedule(Request $request, $id)
+    {
+        $schedule = Schedule::findOrFail($id);
+        // dd($schedule);
+        $schedule->update($request->all());
+        Alert::success('Succesfully!', 'Schedule has been updated');
+        return redirect()->to('/dashboard/admin/schedule');
     }
 }
