@@ -16,6 +16,38 @@ class AuthController extends Controller
         return view('login');
     }
 
+    public function signup()
+    {
+        return view('signup');
+    }
+
+    public function signUser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role_id' => 'required',
+        ]);
+
+        //dd($request->all());
+
+        $existingUser = User::where('email', $request->email)->first();
+        if ($existingUser) {
+            // Alert::error('Error!', 'A user with this email address already exists.');
+            return redirect()->back()->with('error', 'A user with this email address already exists.');
+        }
+        User::firstOrCreate([
+            'email' => $request->email
+        ], [
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id
+        ]);
+        // Alert::success('Succesfully!', 'User has been created');
+        return redirect('/login')->with('success', 'User has been created');
+    }
+
     public function storeLogin(Request $request)
     {
         $credentials = [
@@ -23,13 +55,25 @@ class AuthController extends Controller
             'password' => $request->password
         ];
 
+        // if (Auth::attempt($credentials)) {
+        //     $request->session()->regenerate();
+        //     Alert::success('Success', 'Login successful');
+        //     return redirect()->intended('dashboard/admin');
+        // }
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            Alert::success('Success', 'Login successful');
-            return redirect()->intended('dashboard/admin');
+
+            $user = Auth::user();
+            if ($user->role_id == 3) {
+                Alert::success('Success', 'Login successful');
+                return redirect()->intended('dashboard/user');
+            } else {
+                Alert::success('Success', 'Login successful');
+                return redirect()->intended('dashboard/admin');
+            }
         }
 
-        return back()->with('error', 'Invalid credentials');
+        return back()->with('error', 'Invalid email or password');
     }
 
     public function logout(Request $request)
@@ -62,13 +106,25 @@ class AuthController extends Controller
             'role_id' => 'required',
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role_id = $request->role_id;
+        $existingUser = User::where('email', $request->email)->first();
+        if ($existingUser) {
+            Alert::error('Error!', 'A user with this email address already exists.');
+            return redirect()->back();
+        }
 
-        $user->save();
+        $user = User::firstOrCreate([
+            'email' => $request->email
+        ], [
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id
+        ]);
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->password = Hash::make($request->password);
+        // $user->role_id = $request->role_id;
+
+        // $user->save();
         Alert::success('Succesfully!', 'User has been created');
         return redirect()->back();
     }

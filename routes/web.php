@@ -3,6 +3,7 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,10 +55,16 @@ Route::prefix('/dashboard/admin')->group(function () {
     Route::get('/user-role/{id}/restore', [AuthController::class, 'restore_role'])->middleware('auth', 'verified');
 });
 
+Route::prefix('/dashboard/user')->group(function () {
+    Route::get('/', [UserDashboardController::class, 'index'])->middleware('auth', 'verified');
+});
+
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'storeLogin'])->name('login');
+    Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
+    Route::post('/signup', [AuthController::class, 'signUser'])->name('signup');
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

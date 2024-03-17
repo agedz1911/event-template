@@ -8,12 +8,12 @@
             </span>
             <img src="images/logo-dark.png" height="32" class="logo-dark-mode" alt="">
         </a>
-        <!-- <div class="buy-button">
-            <a href="https://1.envato.market/4n73n" target="_blank">
-                <div class="btn btn-primary login-btn-primary">Buy Now</div>
-                <div class="btn btn-light login-btn-light">Buy Now</div>
+        <div class="buy-button">
+            <a href="/login">
+                <div class="btn btn-primary login-btn-primary">Login</div>
+                <div class="btn btn-light login-btn-light">Login</div>
             </a>
-        </div> -->
+        </div>
         <!--end login button-->
         <!-- End Logo container-->
         <div class="menu-extras">
