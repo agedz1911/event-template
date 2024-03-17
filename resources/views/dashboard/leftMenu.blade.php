@@ -19,14 +19,20 @@
         <ul class="app-menu">
 
             <li class="menu-title">Menu</li>
-
+            @if (Auth::user()->role_id == 3)
+            <li class="menu-item">
+                <a href="/dashboard/user" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
+                    <span class="menu-text"> Dashboards </span>
+                </a>
+            </li>
+            @else
             <li class="menu-item">
                 <a href="/dashboard/admin" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
                     <span class="menu-text"> Dashboards </span>
                 </a>
             </li>
-
             <li class="menu-title">Setting</li>
 
             <li class="menu-item">
@@ -52,7 +58,7 @@
                                 <span class="menu-text">Schedule</span>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </li>
@@ -80,6 +86,7 @@
                     </ul>
                 </div>
             </li>
+            @endif
         </ul>
     </div>
 </div>

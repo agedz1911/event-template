@@ -86,15 +86,18 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function userRegister()
+    public function userRegister(Request $request)
     {
+        $keyword = $request->keyword;
+
         $roles = Role::where('name', '!=', 'superadmin')->get();
-        $users =  User::get();
+        $users =  User::where('name', 'LIKE', '%' . $keyword . '%')->paginate(20);
+        $deleted_user = User::onlyTrashed()->get();
 
         $title = 'Delete Data!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
-        return view('dashboard.admin.users.register', compact('users', 'roles'));
+        return view('dashboard.admin.users.register', compact('users', 'roles', 'deleted_user'));
     }
 
     public function storeUser(Request $request)
@@ -126,6 +129,20 @@ class AuthController extends Controller
 
         // $user->save();
         Alert::success('Succesfully!', 'User has been created');
+        return redirect()->back();
+    }
+
+    public function delete_user($id)
+    {
+        $data = User::find($id);
+        $data->delete();
+        Alert::success('Succesfully!', 'Role has been deleted');
+        return redirect()->back();
+    }
+    public function restore_user($id)
+    {
+        User::withTrashed()->where('id', $id)->restore();
+        Alert::success('Succesfully!', 'Role has been restored');
         return redirect()->back();
     }
 

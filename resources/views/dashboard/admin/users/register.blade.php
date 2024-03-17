@@ -24,8 +24,10 @@
                             <div class="d-flex flex-column gap-2">
                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-data"><i
                                         class="fas fa-add"></i> Add Data</button>
+                                @if (Auth::user()->role_id == 4)
                                 <button class="btn btn-info" data-bs-toggle="modal"
                                     data-bs-target="#deleted-data">Deleted Data</button>
+                                @endif
                             </div>
                         </div>
 
@@ -52,14 +54,15 @@
                                 <td>{{$user->roles->name}}</td>
                                 <td>
                                     <button class="btn btn-secondary">Edit</button>
-                                    <a href="" data-confirm-delete="true" class="btn btn-danger">Delete</a>
+                                    <a href="{{url('/dashboard/admin/delete_user', $user->id)}}"
+                                        data-confirm-delete="true" class="btn btn-danger">Delete</a>
                                 </td>
 
                             </tr>
                         </tbody>
                         @endforeach
                     </table>
-
+                    {{ $users->links() }}
                 </div> <!-- end card body-->
             </div> <!-- end card -->
             <!--end card-->
@@ -127,6 +130,76 @@
                             </div>
 
                         </form>
+
+                    </div> <!-- end card-body -->
+                </div>
+                <!-- end card -->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!--Modal deleted Data -->
+<div id="deleted-data" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-body p-4">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <table class="table dt-responsive">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+
+                                </tr>
+                            </thead>
+                            @foreach ($deleted_user as $user)
+
+                            <tbody>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->roles->name}}</td>
+                                    <td>
+                                        <a href="/dashboard/admin/delete_user/{{$user->id}}/restore"
+                                            class="btn btn-primary">Restore</a>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                            @endforeach
+                        </table>
+                        {{-- <table class="table dt-responsive nowrap w-100 mt-3">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>name</th>
+                                    <th>Actions</th>
+
+                                </tr>
+                            </thead>
+                            @foreach ($deleted_role as $role)
+
+                            <tbody>
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$role->name}}</td>
+                                    <td>
+                                        <a href="/dashboard/admin/user-role/{{$role->id}}/restore"
+                                            class="btn btn-primary">Restore</a>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                            @endforeach
+                        </table> --}}
 
                     </div> <!-- end card-body -->
                 </div>
