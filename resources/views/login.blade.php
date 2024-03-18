@@ -52,11 +52,11 @@
                                 <input class="form-control" type="password" required name="password" id="password"
                                     placeholder="Enter your password">
                             </div>
-
-                            <div class="form-group mb-0 text-center">
+                            
+                            <div class="form-group mb-0 text-center mt-3">
                                 <button class="btn btn-primary w-100" type="submit"> Log In </button>
                             </div>
-
+                            
                         </form>
                     </div> <!-- end card-body -->
                 </div>

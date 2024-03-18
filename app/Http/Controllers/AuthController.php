@@ -13,6 +13,7 @@ class AuthController extends Controller
 {
     public function login()
     {
+        
         return view('login');
     }
 
@@ -28,6 +29,7 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
             'role_id' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         //dd($request->all());

@@ -1,6 +1,6 @@
 @extends('layouts.mainLayout')
 
-@section('title', 'Home')
+@section('title', 'Abstract')
 
 @section('content')
     <section class="bg-half d-table w-100" style="background: url('{{ asset('assets/images/aboutus.png') }}') center center;">
@@ -27,7 +27,7 @@
             </div><!--end row-->
         </div> <!--end container-->
     </section><!--end section-->
-    
+
     <section class="section" id="guideline">
         <div class="container">
             <div class="row justify-content-center">
@@ -176,26 +176,26 @@
                             </div>
 
                             <!-- <div class="accordion-item">
-                                        <h2 class="accordion-header rounded" id="headingfour">
-                                        <button class="accordion-button collapsed  border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                                            Abstract Selection
-                                        </button>
-                                        </h2>
-                                        <div id="collapsefour" class="accordion-collapse  collapse" aria-labelledby="headingfour" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body text-muted card">
-                                            <p>Abstracts will be reviewed by the Scientific Committee to ensure that high-quality scientific submissions are selected for presentation at the Congress. The following criteria will be used to accept the abstracts:</p>
-                                            <ul>
-                                                <li>Significance of the abstract for neurosurgery </li>
-                                                <li>Innovativeness of ideas, methods, and/or approach</li>
-                                                <li>The Rigor of methods and approach (analytical design for research, systematic approach for practice and/or policy)</li>
-                                                <li>Presentation of empirical findings (not applicable if the abstract does not present empirical research)</li>
-                                                <li>Implications identified for future research, practice, and/or policy</li>
-                                                <li>Clarity of writing</li>
-                                            </ul>
-                                            <p>Notification of the Abstract Selection Committee’s decision will be sent by May 19th, 2024 via email to the Submitting Author, regardless of the outcome</p>
-                                        </div>
-                                        </div>
-                                    </div> -->
+                                            <h2 class="accordion-header rounded" id="headingfour">
+                                            <button class="accordion-button collapsed  border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                                Abstract Selection
+                                            </button>
+                                            </h2>
+                                            <div id="collapsefour" class="accordion-collapse  collapse" aria-labelledby="headingfour" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body text-muted card">
+                                                <p>Abstracts will be reviewed by the Scientific Committee to ensure that high-quality scientific submissions are selected for presentation at the Congress. The following criteria will be used to accept the abstracts:</p>
+                                                <ul>
+                                                    <li>Significance of the abstract for neurosurgery </li>
+                                                    <li>Innovativeness of ideas, methods, and/or approach</li>
+                                                    <li>The Rigor of methods and approach (analytical design for research, systematic approach for practice and/or policy)</li>
+                                                    <li>Presentation of empirical findings (not applicable if the abstract does not present empirical research)</li>
+                                                    <li>Implications identified for future research, practice, and/or policy</li>
+                                                    <li>Clarity of writing</li>
+                                                </ul>
+                                                <p>Notification of the Abstract Selection Committee’s decision will be sent by May 19th, 2024 via email to the Submitting Author, regardless of the outcome</p>
+                                            </div>
+                                            </div>
+                                        </div> -->
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header rounded" id="headingfive">
@@ -267,27 +267,66 @@
     <section class="section" id="submit">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-6 col-12 border shadow py-5 px-4 rounded">
-                    <div class="p-2 text-center rounded bg-primary shadow">
-                        <h4 class="mb-0 "> Online Submission</h4>
+                <div class="col-lg-10 col-12  py-5 px-4 rounded">
+                    <div class="p-2 text-center rounded bg-primary ">
+                        <h4 class="mb-0 text-white"> Form Upload Abstract</h4>
                     </div>
 
                     <div class="card mt-4 pt-2 rounded shadow border-0">
                         <div class="card-body">
-                            <p class="card-title">Click the submit abstract button to submit your abstract </p>
+                            <h4 class="card-title text-center mb-5">Event Title</h4>
                             <!-- <p class="card-title">Submission for abstract has been closed </p> -->
-                            <div class="progress-box mt-4">
-                                <div class="">
-                                    <!-- <a class="btn btn-soft-primary" href="javascript:void(0)"><i class="uil uil-upload mx-1"></i> Submit Abstract</a> -->
-                                    <a class="btn btn-primary" href="javascript:void(0)" data-bs-toggle="modal"
-                                        data-bs-target="#submitAbstract"><i class="uil uil-upload mx-1"></i> Submit
-                                        Abstract</a>
-                                    <div class="progress-bar progress-bar-striped position-relative bg-primary"
-                                        style="width:67%;">
-                                    </div>
+                            <form action="">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="name">Full Name</label>
+                                    <input class="form-control" type="text" id="name" required name="name"
+                                        placeholder="Enter your Name">
                                 </div>
-                            </div><!--end process box-->
-                            <p class="text-muted mt-4 mb-0"><i>*make sure the file conforms to the guidelines.</i></p>
+
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="emailaddress">Email address</label>
+                                    <input class="form-control" type="email" id="emailaddress" required name="email"
+                                        placeholder="Enter your email">
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="phone">Phone Number</label>
+                                    <input class="form-control" type="tel" id="phone" required name="phone"
+                                        placeholder="Enter your Phone Number">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="institution">Institution</label>
+                                    <input class="form-control" type="text" id="institution" required
+                                        name="institution" placeholder="Enter your Institution">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="country">Country</label>
+                                    <select name="country" class="form-select" id="country">
+                                        <option value="">Select your country</option>
+                                        <option value="">Country 1</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="abstractType">Abstract Type</label>
+                                    <select name="abstractType" class="form-select" id="abstractType">
+                                        <option value="">Choose Type Abstract</option>
+                                        <option value="">Type 1</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="title">Presentation Title</label>
+                                    <textarea class="form-control" id="title" rows="3"></textarea>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="file">File</label>
+                                    <input class="form-control" type="file" id="file" required name="file"
+                                        placeholder="Enter your Institution">
+                                </div>
+                                {!! NoCaptcha::renderJs() !!}
+                                {!! NoCaptcha::display() !!}  
+                                <button class="btn btn-primary w-100 mt-3">Submit</button>
+                            </form>
+                            <p class="text-danger mt-4 mb-0"><i>*make sure the file conforms to the guidelines.</i></p>
                         </div>
                     </div>
                 </div><!--end col-->
