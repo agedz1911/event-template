@@ -33,6 +33,7 @@ class MainController extends Controller
 
     public function submission()
     {
-        return view('abstractSubmission');
+        $countries = countries();
+        return view('abstractSubmission', ['countries' => $countries]);
     }
 }

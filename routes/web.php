@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AbstractSubmissionController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserDashboardController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +27,7 @@ Route::get('/congress-information', [MainController::class, 'congressInfo']);
 Route::get('/scientific-program', [MainController::class, 'scientificProgram']);
 Route::get('/registration', [MainController::class, 'registration']);
 Route::get('/submission', [MainController::class, 'submission']);
+Route::post('/submission', [AbstractSubmissionController::class, 'storeAbstract'])->name('submission');
 
 // Route::get('/dashboard/admin', function () {
 //     return view('dashboard.admin.home');
