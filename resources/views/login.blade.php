@@ -12,6 +12,7 @@
 </head>
 
 <body class="bg-primary">
+    @include('sweetalert::alert')
     <div class="container">
         <div class="row justify-content-center align-items-center vh-100">
             <div class="col-xl-4 col-md-6">
@@ -42,21 +43,19 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="form-label" for="emailaddress">Email address</label>
-                                <input class="form-control" type="email" id="emailaddress" required name="email"
-                                    placeholder="Enter your email">
+                                <input class="form-control" type="email" id="emailaddress" required name="email" placeholder="Enter your email">
                             </div>
 
                             <div class="form-group mb-3">
 
                                 <label class="form-label" for="password">Password</label>
-                                <input class="form-control" type="password" required name="password" id="password"
-                                    placeholder="Enter your password">
+                                <input class="form-control" type="password" required name="password" id="password" placeholder="Enter your password">
                             </div>
-                            
+
                             <div class="form-group mb-0 text-center mt-3">
                                 <button class="btn btn-primary w-100" type="submit"> Log In </button>
                             </div>
-                            
+
                         </form>
                     </div> <!-- end card-body -->
                 </div>
@@ -66,8 +65,7 @@
                     <div class="col-12 text-center">
                         <p class="text-white-50"> <a href="javascript:void(0)" class="text-white-50 ms-1">Forgot your
                                 password?</a></p>
-                        <p class="text-white-50">Don't have an account? <a href="{{route('signup')}}"
-                                class="text-white font-weight-medium ms-1">Sign Up</a></p>
+                        <p class="text-white-50">Don't have an account? <a href="{{route('signup')}}" class="text-white font-weight-medium ms-1">Sign Up</a></p>
                     </div> <!-- end col -->
                 </div>
                 <!-- end row -->

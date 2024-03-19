@@ -28,26 +28,28 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'role_id' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         //dd($request->all());
 
         $existingUser = User::where('email', $request->email)->first();
         if ($existingUser) {
-            // Alert::error('Error!', 'A user with this email address already exists.');
-            return redirect()->back()->with('error', 'A user with this email address already exists.');
+            Alert::error('Error!', 'A user with this email address already exists.');
+            return redirect()->back();
+            // ->with('error', 'A user with this email address already exists.');
         }
+        $role_id = '3';
         User::firstOrCreate([
             'email' => $request->email
         ], [
             'name' => $request->name,
             'password' => Hash::make($request->password),
-            'role_id' => $request->role_id
+            'role_id' => $role_id
         ]);
-        // Alert::success('Succesfully!', 'User has been created');
-        return redirect('/login')->with('success', 'User has been created');
+        Alert::success('Succesfully!', 'User has been created');
+        return redirect('/login');
+        // ->with('success', 'User has been created');
     }
 
     public function storeLogin(Request $request)
@@ -74,8 +76,9 @@ class AuthController extends Controller
                 return redirect()->intended('dashboard/admin');
             }
         }
-
-        return back()->with('error', 'Invalid email or password');
+        Alert::error('error', 'Invalid email or password');
+        return back();
+        // ->with('error', 'Invalid email or password');
     }
 
     public function logout(Request $request)
@@ -109,6 +112,7 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
             'role_id' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         $existingUser = User::where('email', $request->email)->first();

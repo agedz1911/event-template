@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('institution');
             $table->string('country');
             $table->string('abstract_type');
-            $table->string('title');
+            $table->string('title', 1000);
             $table->string('file');
             $table->timestamps();
             $table->softDeletes();

@@ -26,14 +26,14 @@ class AbstractSubmissionController extends Controller
                 'institution' => 'required',
                 'country' => 'required',
                 'abstract_type' => 'required',
-                'title' => 'required|max:200',
+                'title' => 'required|max:350',
                 'file' => 'required',
                 'g-recaptcha-response' => 'required|captcha',
             ]
         );
 
         //dd($request->all());
-        $customId = 'A-' . str_pad(DB::table('abstract_submissions')->count() + 10001, 4, '0', STR_PAD_LEFT);
+        $customId = 'A-' . str_pad(DB::table('abstract_submissions')->count() + 0001, 4, '0', STR_PAD_LEFT);
         
         $abstract = new AbstractSubmission();
 
@@ -59,6 +59,7 @@ class AbstractSubmissionController extends Controller
         $abstract->save();
         Alert::success('Succesfully!', 'Abstract has been submited');
         return redirect('/submission/#submit');
+        //->with('success', 'abstract has been submitted');
         
     }
 }
