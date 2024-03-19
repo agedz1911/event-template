@@ -39,6 +39,7 @@
                                 <th>no</th>
                                 <th>Title</th>
                                 <th>Dates</th>
+                                <th>Dates</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -47,6 +48,7 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$item->title}}</td>
+                                <td>{{$item->id}}</td>
                                 <td>{{\Carbon\Carbon::parse($item->date)->format('l, j F Y')}}</td>
                                 <td>
                                     <div>

@@ -27,6 +27,8 @@
                 </a>
             </li>
             @else
+
+
             <li class="menu-item">
                 <a href="/dashboard/admin" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
@@ -34,7 +36,7 @@
                 </a>
             </li>
             <li class="menu-title">Setting</li>
-
+            
             <li class="menu-item">
                 <a href="#menuExpages" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="bx bx-file"></i></span>
@@ -80,6 +82,25 @@
                         <li class="menu-item">
                             <a href="/dashboard/admin/user-role" class="menu-link">
                                 <span class="menu-text">Role</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+            <li class="menu-title">Menu</li>
+            <li class="menu-item">
+                <a href="#menuCongress" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="fa fa-graduation-cap"></i></span>
+                    <span class="menu-text"> Congress Event </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="menuCongress">
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="/dashboard/admin/abstracts" class="menu-link">
+                                <span class="menu-text">Abstracts</span>
                             </a>
                         </li>
 

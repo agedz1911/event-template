@@ -63,6 +63,7 @@ Route::prefix('/dashboard/admin')->group(function () {
     Route::delete('/delete_role/{id}', [AuthController::class, 'delete_role'])->middleware('auth', 'verified', 'role');
     Route::get('/user-role/{id}/restore', [AuthController::class, 'restore_role'])->middleware('auth', 'verified', 'role');
     
+    Route::get('/abstracts', [AbstractSubmissionController::class, 'index'])->middleware('auth', 'verified', 'role');
 });
 
 Route::prefix('/dashboard/user')->group(function () {

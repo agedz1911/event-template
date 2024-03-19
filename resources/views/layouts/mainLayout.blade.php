@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
+    
     <header id="topnav" class="defaultscroll sticky">
         @include('layouts.mainNavigation')
     </header>
@@ -22,6 +24,8 @@
     </section>
 
     @include('layouts.footer')
+
+    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top"><i class="fa fa-chevron-up"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/plugins.init.js') }}"></script>
