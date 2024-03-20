@@ -5,7 +5,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserDashboardController;
-
+use App\Mail\AbstractSubmissionEmail;
+use App\Models\AbstractSubmission;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,3 +80,10 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('/mailable', function() {
+    $data = AbstractSubmission::find(1);
+
+    return new AbstractSubmissionEmail($data);
+});

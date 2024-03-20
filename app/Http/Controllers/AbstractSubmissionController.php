@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AbstractSubmissionEmail;
 use App\Models\AbstractSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Mail;
 
 class AbstractSubmissionController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
 
-        $abstracts = AbstractSubmission::get();
+        $keyword = $request->keyword;
+        $abstracts = AbstractSubmission::where('full_name', 'LIKE', '%' . $keyword . '%')->paginate(8);
         return view('dashboard.admin.abstracts.abstract', ['abstracts' => $abstracts]);
     }
 
@@ -57,6 +60,14 @@ class AbstractSubmissionController extends Controller
         }
         //dd($abstract);
         $abstract->save();
+        $data = [
+            'full_name' => $abstract->full_name,
+            'title' => $abstract->title,
+            'abstract_id' => $abstract->abstract_id,
+            'url' => url('/dashboard/admin/abstracts/' . $abstract->abstract_id),
+        ];
+        Mail::to($abstract->email)->send(new AbstractSubmissionEmail($data));
+
         Alert::success('Succesfully!', 'Abstract has been submited');
         return redirect('/submission/#submit');
         //->with('success', 'abstract has been submitted');

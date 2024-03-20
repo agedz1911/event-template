@@ -22,10 +22,8 @@
                         </div>
                         <div class="col-lg-2 offset-lg-2 col-12">
                             <div class="d-flex flex-column gap-2">
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-data"><i
-                                        class="fas fa-add"></i> Add Data</button>
-                                <button class="btn btn-info" data-bs-toggle="modal"
-                                    data-bs-target="#deleted-data">Deleted Data</button>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-data"><i class="fas fa-add"></i> Add Data</button>
+                                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#deleted-data">Deleted Data</button>
                             </div>
                         </div>
 
@@ -58,17 +56,15 @@
                                     upload at {{ \Carbon\Carbon::parse($abstract->updated_at)->diffForHumans()}}</td>
                                 <td>
                                     <div>
-                                        <a href="{{ url('/dashboard/admin/edit_faculties', ) }}"
-                                            class="btn btn-secondary">Edit</a>
-                                        <a href="{{ url('/dashboard/admin/delete_faculty', ) }}"
-                                            data-confirm-delete="true" class="btn btn-danger">Delete</a>
+                                        <a href="{{ url('/dashboard/admin/edit_faculties', ) }}" class="btn btn-secondary">Edit</a>
+                                        <a href="{{ url('/dashboard/admin/delete_faculty', ) }}" data-confirm-delete="true" class="btn btn-danger">Delete</a>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                         @endforeach
                     </table>
-                    {{-- {{ $faculties->links() }} --}}
+                    {{ $abstracts->links() }}
                 </div> <!-- end card body-->
             </div> <!-- end card -->
             <!--end card-->
@@ -96,13 +92,11 @@
                             <h4 class="mt-4">Add new Faculties</h4>
                         </div>
 
-                        <form action="{{ '/dashboard/admin/storeFaculties' }}" enctype="multipart/form-data"
-                            method="post">
+                        <form action="{{ '/dashboard/admin/storeFaculties' }}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="form-label" for="name">Name</label>
-                                <input class="form-control" type="text" id="name" required name="name"
-                                    placeholder="Enter Faculty Name">
+                                <input class="form-control" type="text" id="name" required name="name" placeholder="Enter Faculty Name">
                             </div>
 
                             <div class="form-group mb-3">
@@ -111,7 +105,7 @@
                                     <option selected>Select Country</option>
                                     {{-- @foreach ($countries as $country)
                                     <option value="{{ $country['name'] }}">{{ $country['emoji'] }}
-                                        {{ $country['name'] }}
+                                    {{ $country['name'] }}
                                     </option>
                                     @endforeach --}}
 
@@ -120,8 +114,7 @@
 
                             <div class="form-group mb-3">
                                 <label class="form-label" for="image">Image</label>
-                                <input class="form-control" type="file" name="image"
-                                    accept="image/jpg, image/jpeg, image/png" id="image">
+                                <input class="form-control" type="file" name="image" accept="image/jpg, image/jpeg, image/png" id="image">
                             </div>
 
                             <div class="form-group mb-0 text-center">
@@ -161,33 +154,30 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $del_faculty->name }}</td>
-                                    <td>{{ $del_faculty->country }}</td>
-                                    <td>
-                                        @if ($del_faculty->image != null)
-                                        <img src="/images/faculty/{{ $del_faculty->image }}"
-                                            alt="{{ $del_faculty->name }}" width="80px" class="img-">
-                                        @else
-                                        <img src="/assets/images/user.png" alt="{{ $del_faculty->name }}" width="80px"
-                                            class="img-thumbnail">
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <a href="/dashboard/admin/faculties/{{ $del_faculty->id }}/restore"
-                                                class="btn btn-primary">Restore</a>
+<td>{{ $del_faculty->name }}</td>
+<td>{{ $del_faculty->country }}</td>
+<td>
+    @if ($del_faculty->image != null)
+    <img src="/images/faculty/{{ $del_faculty->image }}" alt="{{ $del_faculty->name }}" width="80px" class="img-">
+    @else
+    <img src="/assets/images/user.png" alt="{{ $del_faculty->name }}" width="80px" class="img-thumbnail">
+    @endif
+</td>
+<td>
+    <div>
+        <a href="/dashboard/admin/faculties/{{ $del_faculty->id }}/restore" class="btn btn-primary">Restore</a>
 
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
+</td>
+</tr>
+</tbody>
+@endforeach
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
 </div> --}}
 <!-- /.modal -->
