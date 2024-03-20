@@ -112,7 +112,6 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
             'role_id' => 'required',
-            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         $existingUser = User::where('email', $request->email)->first();

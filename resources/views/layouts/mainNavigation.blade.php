@@ -4,7 +4,7 @@
         <a class="logo" href="/">
             <span class="logo-light-mode">
                 <img src="{{asset('assets/images/logo-dark.png')}}" class="l-dark" height="32" alt="">
-                <img src="{{asset('assets/images/logo-dark.png')}}F" class="l-light" height="32" alt="">
+                <img src="{{asset('assets/images/logo-dark.png')}}" class="l-light" height="32" alt="">
             </span>
             <img src="images/logo-dark.png" height="32" class="logo-dark-mode" alt="">
         </a>
