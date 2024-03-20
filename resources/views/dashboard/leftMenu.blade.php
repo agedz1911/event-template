@@ -107,6 +107,28 @@
                     </ul>
                 </div>
             </li>
+            <li class="menu-item">
+                <a href="#menuRegistrasi" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="fa fa-tag"></i></span>
+                    <span class="menu-text"> Registration </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="menuRegistrasi">
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="/dashboard/admin/package-registration" class="menu-link">
+                                <span class="menu-text">Package Registration</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/dashboard/admin/category-registration" class="menu-link">
+                                <span class="menu-text">Category Registration</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
             @endif
         </ul>
     </div>

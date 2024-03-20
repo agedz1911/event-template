@@ -82,8 +82,3 @@ Route::group(['middleware' => 'guest'], function () {
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::get('/mailable', function() {
-    $data = AbstractSubmission::find(1);
-
-    return new AbstractSubmissionEmail($data);
-});
