@@ -4,6 +4,7 @@ use App\Http\Controllers\AbstractSubmissionController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserDashboardController;
 use App\Mail\AbstractSubmissionEmail;
 use App\Models\AbstractSubmission;
@@ -69,6 +70,12 @@ Route::prefix('/dashboard/admin')->group(function () {
 
 Route::prefix('/dashboard/user')->group(function () {
     Route::get('/', [UserDashboardController::class, 'index'])->middleware('auth', 'verified');
+});
+
+
+Route::prefix('/dashboard/profile')->group(function () {
+    Route::get('/my-profile', [ProfileController::class, 'index'])->middleware('auth', 'verified');
+    Route::post('/storeProfile', [ProfileController::class, 'storeProfile'])->name('storeProfile')->middleware('auth', 'verified');
 });
 
 

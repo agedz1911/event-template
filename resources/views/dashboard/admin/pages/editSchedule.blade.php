@@ -3,6 +3,21 @@
 @section('title', 'Edit Schedules')
 
 @section('content')
+<div class="py-3 py-lg-4">
+    <div class="row">
+        <div class="col-lg-6">
+            <h4 class="page-title mb-0">Dashboard</h4>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-none d-lg-block">
+                <ol class="breadcrumb m-0 float-end">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashtrap</a></li>
+                    <li class="breadcrumb-item active">Edit Schedule</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <a href="/dashboard/admin/schedule" class="mt-3 btn btn-secondary">Back</a>
     <div class="row justify-content-center mt-3">
@@ -20,14 +35,12 @@
                         <h4 class="mt-4">Edit Schedule</h4>
 
                     </div>
-                    <form class="needs-validation" action="/dashboard/admin/edit_schedule/{{$schedules->id}}"
-                        method="post" novalidate>
+                    <form class="needs-validation" action="/dashboard/admin/edit_schedule/{{$schedules->id}}" method="post" novalidate>
                         @csrf
                         @method('PUT')
                         <div class="form-group mb-3">
                             <label class="form-label" for="date">Date</label>
-                            <input class="form-control" type="date" id="date" value="{{$schedules->date}}" name="date"
-                                required>
+                            <input class="form-control" type="date" id="date" value="{{$schedules->date}}" name="date" required>
                             <div class="invalid-feedback">
                                 please input valid date
                             </div>
@@ -35,8 +48,7 @@
 
                         <div class="form-group mb-3">
                             <label class="form-label" for="time">Time</label>
-                            <input class="form-control" type="text" id="time" value="{{$schedules->time}}" name="time"
-                                required placeholder="Enter Time">
+                            <input class="form-control" type="text" id="time" value="{{$schedules->time}}" name="time" required placeholder="Enter Time">
 
                             <div class="invalid-feedback">
                                 please input Time
@@ -45,8 +57,7 @@
 
                         <div class="form-group mb-3">
                             <label class="form-label" for="room">Room</label>
-                            <input class="form-control" type="text" id="room" name="room" value="{{$schedules->room}}"
-                                required placeholder="Enter Room">
+                            <input class="form-control" type="text" id="room" name="room" value="{{$schedules->room}}" required placeholder="Enter Room">
 
                             <div class="invalid-feedback">
                                 please input Room
@@ -55,8 +66,7 @@
 
                         <div class="form-group mb-3">
                             <label class="form-label" for="title">Session / Title</label>
-                            <input class="form-control" type="text" id="title" value="{{$schedules->title}}"
-                                name="title" required placeholder="Enter title">
+                            <input class="form-control" type="text" id="title" value="{{$schedules->title}}" name="title" required placeholder="Enter title">
 
                             <div class="invalid-feedback">
                                 please input title

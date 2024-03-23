@@ -43,22 +43,17 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-user"></i>
+                    <a href="/dashboard/profile/my-profile" class="dropdown-item notify-item">
+                        <i class="fa fa-user"></i>
                         <span>My Account</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings"></i>
-                        <span>Settings</span>
+                        <i class="fa fa-edit"></i>
+                        <span>Change Password</span>
                     </a>
 
-                    <!-- item-->
-                    <a href="pages-lock-screen.html" class="dropdown-item notify-item">
-                        <i class="fe-lock"></i>
-                        <span>Lock Screen</span>
-                    </a>
 
                     <div class="dropdown-divider"></div>
 
@@ -67,7 +62,7 @@
                         @csrf
                         
                         <button type="submit" class="dropdown-item notify-item">
-                            <i class="fe-log-out"></i>
+                            <i class="fa fa-sign-out"></i>
                             <span>Logout</span>
                         </button>
                     </form>

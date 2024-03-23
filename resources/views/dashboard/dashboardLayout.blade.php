@@ -19,7 +19,7 @@
 
 <body>
     @include('sweetalert::alert')
-    
+
     <div class="layout-wrapper">
         @include('dashboard.leftMenu')
 
@@ -27,6 +27,7 @@
             @include('dashboard.topMenu')
 
             <div class="px-3">
+                
                 @yield('content')
             </div>
 
@@ -41,19 +42,6 @@
 
     <script src="{{asset('assets/js/vendor.js')}}"></script>
     <script src="{{asset('assets/js/app.js')}}"></script>
-
-    <!-- <script src="{{asset('assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
-    <script src="{{asset('assets/libs/datatables.net-select/js/dataTables.select.min.js')}}"></script> -->
-    
     <script src="{{asset('assets/js/datatables.js')}}"></script>
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
 

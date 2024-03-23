@@ -21,11 +21,11 @@
 
                         <div class="text-center w-75 mx-auto auth-logo mb-4">
                             <a href="/" class="logo-dark">
-                                <span><img src="assets/images/logo-dark.png" alt="" height="22"></span>
+                                <span><img src="/assets/images/logo-dark.png" alt="" height="22"></span>
                             </a>
 
                             <a href="/" class="logo-light">
-                                <span><img src="assets/images/logo-light.png" alt="" height="22"></span>
+                                <span><img src="/assets/images/logo-light.png" alt="" height="22"></span>
                             </a>
                             <h4 class="mt-4 mb-3 text-muted fw-bold">Sign Up</h4>
                         </div>
@@ -37,7 +37,7 @@
                         <form class="needs-validation" action="{{ route('signup') }}" method="post" novalidate>
                             @csrf
                             <div class="form-group mb-3">
-                                <label class="form-label" for="name">Name</label>
+                                <label class="form-label" for="name">Full Name</label>
                                 <input class="form-control" type="text" id="name" required name="name"
                                     placeholder="Enter your Name">
                                 <div class="invalid-feedback">

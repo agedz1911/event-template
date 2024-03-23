@@ -26,6 +26,21 @@
                     <span class="menu-text"> Dashboards </span>
                 </a>
             </li>
+
+            <li class="menu-item">
+                <a href="/dashboard/profile/my-profile" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-user"></i></span>
+                    <span class="menu-text"> Biodata </span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="/dashboard/user" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-shopping-bag"></i></span>
+                    <span class="menu-text"> Registration </span>
+                </a>
+            </li>
+            
             @else
 
 

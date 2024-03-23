@@ -3,6 +3,21 @@
 @section('title', 'Schedule')
 
 @section('content')
+<div class="py-3 py-lg-4">
+    <div class="row">
+        <div class="col-lg-6">
+            <h4 class="page-title mb-0">Dashboard</h4>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-none d-lg-block">
+                <ol class="breadcrumb m-0 float-end">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashtrap</a></li>
+                    <li class="breadcrumb-item active">Schedules</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row justify-content-center mt-3">
         <div class="col-lg-11">
@@ -22,10 +37,8 @@
                         </div>
                         <div class="col-lg-2 offset-lg-2 col-12">
                             <div class="d-flex flex-column gap-2">
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-data"><i
-                                        class="fas fa-add"></i> Add Data</button>
-                                <button class="btn btn-info" data-bs-toggle="modal"
-                                    data-bs-target="#deleted-data">Deleted Data</button>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-data"><i class="fas fa-add"></i> Add Data</button>
+                                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#deleted-data">Deleted Data</button>
                             </div>
                         </div>
                     </div>
@@ -63,21 +76,18 @@
                                 {{-- <td>
                                     @if ($schedule->faculty->image != null)
                                     <img src="/assets/images/faculty/{{ $schedule->faculty->image }}"
-                                        alt="{{ $schedule->faculty->image }}" width="80px" class="img-">
-                                    @else
-                                    <img src="/assets/images/user.png" alt="{{ $schedule->faculty->name }}" width="80px"
-                                        class="img-thumbnail">
-                                    @endif
+                                alt="{{ $schedule->faculty->image }}" width="80px" class="img-">
+                                @else
+                                <img src="/assets/images/user.png" alt="{{ $schedule->faculty->name }}" width="80px" class="img-thumbnail">
+                                @endif
                                 </td> --}}
                                 <td>
                                     {{ \Carbon\Carbon::parse($schedule->updated_at)->diffForHumans()}}
                                 </td>
                                 <td>
                                     <div>
-                                        <a href="{{ url('/dashboard/admin/edit_schedule', $schedule->id)}}"
-                                            class="btn btn-secondary">Edit</a>
-                                        <a href="{{ url('/dashboard/admin/delete_schedule', $schedule->id) }}"
-                                            data-confirm-delete="true" class="btn btn-danger">Delete</a>
+                                        <a href="{{ url('/dashboard/admin/edit_schedule', $schedule->id)}}" class="btn btn-secondary">Edit</a>
+                                        <a href="{{ url('/dashboard/admin/delete_schedule', $schedule->id) }}" data-confirm-delete="true" class="btn btn-danger">Delete</a>
                                     </div>
                                 </td>
 
@@ -115,8 +125,7 @@
                             <h4 class="mt-4">Add new Schedule</h4>
 
                         </div>
-                        <form class="needs-validation" action="{{ '/dashboard/admin/storeSchedule' }}" method="post"
-                            novalidate>
+                        <form class="needs-validation" action="{{ '/dashboard/admin/storeSchedule' }}" method="post" novalidate>
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="form-label" for="date">Date</label>
@@ -128,8 +137,7 @@
 
                             <div class="form-group mb-3">
                                 <label class="form-label" for="time">Time</label>
-                                <input class="form-control" type="text" id="time" name="time" required
-                                    placeholder="Enter Time">
+                                <input class="form-control" type="text" id="time" name="time" required placeholder="Enter Time">
 
                                 <div class="invalid-feedback">
                                     please input Time
@@ -138,8 +146,7 @@
 
                             <div class="form-group mb-3">
                                 <label class="form-label" for="room">Room</label>
-                                <input class="form-control" type="text" id="room" name="room" required
-                                    placeholder="Enter Room">
+                                <input class="form-control" type="text" id="room" name="room" required placeholder="Enter Room">
 
                                 <div class="invalid-feedback">
                                     please input Room
@@ -148,8 +155,7 @@
 
                             <div class="form-group mb-3">
                                 <label class="form-label" for="title">Session / Title</label>
-                                <input class="form-control" type="text" id="title" name="title" required
-                                    placeholder="Enter title">
+                                <input class="form-control" type="text" id="title" name="title" required placeholder="Enter title">
 
                                 <div class="invalid-feedback">
                                     please input title
@@ -222,8 +228,7 @@
                                     <td>{{ $de_schedule->room }}</td>
                                     <td>
                                         <div>
-                                            <a href="/dashboard/admin/schedule/{{ $de_schedule->id }}/restore"
-                                                class="btn btn-primary">Restore</a>
+                                            <a href="/dashboard/admin/schedule/{{ $de_schedule->id }}/restore" class="btn btn-primary">Restore</a>
                                         </div>
 
                                 </tr>
