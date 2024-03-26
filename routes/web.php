@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegistrationDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Mail\AbstractSubmissionEmail;
 use App\Models\AbstractSubmission;
@@ -66,6 +67,8 @@ Route::prefix('/dashboard/admin')->group(function () {
     Route::get('/user-role/{id}/restore', [AuthController::class, 'restore_role'])->middleware('auth', 'verified', 'role');
     
     Route::get('/abstracts', [AbstractSubmissionController::class, 'index'])->middleware('auth', 'verified', 'role');
+
+    Route::get('/registrations-package', [RegistrationDashboardController::class, 'index'])->middleware('auth', 'verified', 'role');
 });
 
 Route::prefix('/dashboard/user')->group(function () {

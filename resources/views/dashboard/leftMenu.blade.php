@@ -131,7 +131,7 @@
                 <div class="collapse" id="menuRegistrasi">
                     <ul class="sub-menu">
                         <li class="menu-item">
-                            <a href="/dashboard/admin/package-registration" class="menu-link">
+                            <a href="/dashboard/admin/registrations-package" class="menu-link">
                                 <span class="menu-text">Package Registration</span>
                             </a>
                         </li>

@@ -28,7 +28,7 @@
                 @csrf
                 <div class="row">
                     <h3 class="mb-3">Biodata</h3>
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="name">Full Name</label>
                             <input class="form-control" type="text" disabled id="name" value="{{Auth::user()->name}}"
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12">
                         <div class="form-group mb-3">
                             <label class="form-label" for="email">Email</label>
                             <input class="form-control" type="text" id="email" disabled value="{{Auth::user()->email}}"
@@ -49,41 +49,64 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col pt-2">
-                        <label for="title" class="form-label">Title</label>
-                        <div class="d-flex gap-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="title" value="prof" id="prof" {{
-                                    $biodata && $biodata->title == 'prof' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="prof">
-                                    Prof.
-                                </label>
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-12 pt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-12 pt-2">
+                                <label for="title" class="form-label">Title</label>
+                                <div class="d-flex gap-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="title" value="prof" id="prof"
+                                            {{ $biodata && $biodata->title == 'prof' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="prof">
+                                            Prof.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="title" value="MD" id="MD" {{
+                                            $biodata && $biodata->title == 'MD' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="MD">
+                                            MD
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="title" value="Mr" id="Mr" {{
+                                            $biodata && $biodata->title == 'Mr' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="Mr">
+                                            Mr
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="title" value="Miss" id="Miss"
+                                            {{ $biodata && $biodata->title == 'Miss' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="Miss">
+                                            Miss
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="title" value="MD" id="MD" {{ $biodata
-                                    && $biodata->title == 'MD' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="MD">
-                                    MD
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="title" value="Mr" id="Mr" {{ $biodata
-                                    && $biodata->title == 'Mr' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="Mr">
-                                    Mr
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="title" value="Miss" id="Miss" {{
-                                    $biodata && $biodata->title == 'Miss' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="Miss">
-                                    Miss
-                                </label>
+                            <div class="col-lg-8 col-12 pt-2">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="speciality">Speciality</label>
+                                    <select required class="form-select" id="speciality" name="speciality">
+                                        <option value="" disabled selected>Select Speciality</option>
+
+                                        @foreach(['Specialist', 'Subspecialist', 'General Practitioner', 'Resident',
+                                        'Medical Student', 'Nurse'] as $speciality)
+
+                                        <option value="{{ $speciality }}" {{ old('speciality', $biodata->speciality ??
+                                            '') == $speciality ? 'selected' : '' }}>{{ $speciality }}</option>
+
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Select your speciality
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="certificate">Name on Certificate</label>
                             <input class="form-control" type="text" id="certificate"
@@ -96,7 +119,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="institution">Institutions</label>
                             <input class="form-control" value="{{ $biodata ? $biodata->institution : '' }}" type="text"
@@ -106,7 +129,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="country">Country</label>
                             <select required class="form-select" id="country" name="country">
@@ -125,7 +148,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="province">Province / State</label>
                             <input class="form-control" value="{{ $biodata ? $biodata->province : '' }}" type="text"
@@ -135,7 +158,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="city">City</label>
                             <input class="form-control" value="{{ $biodata ? $biodata->city : '' }}" required
@@ -147,7 +170,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="address">Address</label>
                             <textarea class="form-control" placeholder="Enter your Address" name="address" id="address"
@@ -157,7 +180,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="zipcode">Zip Code</label>
                             <input class="form-control" value="{{ $biodata ? $biodata->zipcode : '' }}" type="text"
@@ -169,7 +192,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="phoneNumber">Phone Number</label>
                             <input class="form-control" value="{{ $biodata ? $biodata->phoneNumber : '' }}" required
@@ -179,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col pt-2">
+                    <div class="col-md-6 col-12 pt-2">
                         <div class="form-group mb-3">
                             <label class="form-label" for="secondEmail">Second Email</label>
                             <input class="form-control" value="{{ $biodata ? $biodata->secondEmail : '' }}" type="email"

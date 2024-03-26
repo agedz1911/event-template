@@ -13,6 +13,7 @@ class Biodata extends Model
 
     protected $fillable = [
         'title',
+        'speciality',
         'nameCertificate',
         'institution',
         'country',
