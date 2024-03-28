@@ -345,6 +345,7 @@
                                         <small class="text-danger fst-italic" role="alert">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="abstract_type">Abstract Type</label>
                                     <select name="abstract_type" class="form-select" id="abstract_type">

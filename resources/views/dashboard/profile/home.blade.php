@@ -54,7 +54,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-12 pt-2">
                                 <label for="title" class="form-label">Title</label>
-                                <div class="d-flex gap-3">
+                                <div class="d-flex gap-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="title" value="prof" id="prof"
                                             {{ $biodata && $biodata->title == 'prof' ? 'checked' : '' }}>
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8 col-12 pt-2">
+                            <div class="col-lg-7 offset-lg-1 col-12 pt-2">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="speciality">Speciality</label>
                                     <select required class="form-select" id="speciality" name="speciality">
