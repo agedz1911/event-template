@@ -224,10 +224,10 @@ class ThemeLayout {
     }
     init() {
         this.initComponents(),
-            this.initfullScreenListener(),
-            this.initFormValidation(),
-            this.initMainMenu(),
-            this.initSwitchListener();
+        this.initfullScreenListener(),
+        this.initFormValidation(),
+        this.initMainMenu(),
+        this.initSwitchListener();
     }
 }
 new ThemeLayout().init();

@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/home', function () {
-//     return redirect()->to('/login');
-// });
+Route::get('/home', function () {
+    return redirect()->to('/');
+});
 Route::get('/', [MainController::class, 'index']);
 Route::get('/congress-information', [MainController::class, 'congressInfo']);
 Route::get('/scientific-program', [MainController::class, 'scientificProgram']);
@@ -69,6 +69,9 @@ Route::prefix('/dashboard/admin')->group(function () {
     Route::get('/abstracts', [AbstractSubmissionController::class, 'index'])->middleware('auth', 'verified', 'role');
 
     Route::get('/registrations-package', [RegistrationDashboardController::class, 'index'])->middleware('auth', 'verified', 'role');
+    Route::post('/storeCategoryReg', [RegistrationDashboardController::class, 'storeCategoryReg'])->name('storeCategoryReg')->middleware('auth', 'verified', 'role');
+    Route::post('/storeClassCategory', [RegistrationDashboardController::class, 'storeClassCategory'])->name('storeClassCategory')->middleware('auth', 'verified', 'role');
+    Route::post('/storeProductRegistration', [RegistrationDashboardController::class, 'storeProductRegistration'])->name('storeProductRegistration')->middleware('auth', 'verified', 'role');
 });
 
 Route::prefix('/dashboard/user')->group(function () {

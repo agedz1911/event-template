@@ -104,7 +104,7 @@
                 </div>
             </li>
 
-            <li class="menu-title">Menu</li>
+            <li class="menu-title">Congress</li>
             <li class="menu-item">
                 <a href="#menuCongress" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="fa fa-graduation-cap"></i></span>
