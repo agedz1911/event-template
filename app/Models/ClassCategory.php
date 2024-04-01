@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ClassCategory extends Model
@@ -21,5 +22,10 @@ class ClassCategory extends Model
     public function categoryReg(): BelongsTo
     {
         return $this->belongsTo(CategoryRegistration::class, 'category_id', 'id');
+    }
+
+    public function productReg(): HasMany
+    {
+        return $this->hasMany(ProductRegistration::class);
     }
 }

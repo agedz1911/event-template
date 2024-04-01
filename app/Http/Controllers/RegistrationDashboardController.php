@@ -15,7 +15,7 @@ class RegistrationDashboardController extends Controller
     {
         $categoryReg = CategoryRegistration::paginate(3);
         $classCategory = ClassCategory::with('categoryReg')->paginate(3);
-        $productReg= ProductRegistration::paginate(5);
+        $productReg= ProductRegistration::with('classReg')->paginate(5);
         return view('dashboard.admin.registrations.ProductRegistration', compact('categoryReg', 'classCategory', 'productReg'));
     }
 

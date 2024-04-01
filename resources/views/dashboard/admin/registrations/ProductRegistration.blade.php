@@ -135,7 +135,7 @@
                         <div class="table-responsive px-2">
                             <table class="table table-striped table-hover">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th scope="col">#</th>
                                         <th scope="col">Code</th>
                                         <th scope="col">Registration Product</th>
@@ -149,15 +149,36 @@
                                 </thead>
                                 @foreach ($productReg as $product)
                                 <tbody>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$product->code_product}}</td>
                                         <td>{{$product->product_name}}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{$product->category_id}}</td>
-                                        <td>{{$product->class_id}}</td>
-                                        <td>{{$product->status}}</td>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <small>early bird Rp{{$product->price_idr_early}} | USD{{$product->price_usd_early}}</small>
+                                                <small>Normal Rp{{$product->price_idr_normal}} | USD{{$product->price_usd_normal}}</small>
+                                                <small>Late / Onsite bird Rp{{$product->price_idr_onsite}} | USD{{$product->price_usd_onsite}}</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <small>{{\Carbon\Carbon::parse($product->start_date_early)->format(' j F Y')}} Up to {{\Carbon\Carbon::parse($product->end_date_early)->format(' j F Y')}}</small>
+                                                <small>{{\Carbon\Carbon::parse($product->start_date_normal)->format(' j F Y')}} Up to {{\Carbon\Carbon::parse($product->end_date_normal)->format(' j F Y')}}</small>
+                                                <small>{{\Carbon\Carbon::parse($product->start_date_onsite)->format(' j F Y')}} Up to {{\Carbon\Carbon::parse($product->end_date_onsite)->format(' j F Y')}}</small>
+                                            </div>
+                                        </td>
+                                        <td>{{$product->classReg->categoryReg->category_name}}</td>
+                                        <td>{{$product->classReg->class_name}}</td>
+                                        <td>@switch($product->status)
+                                            @case(1)
+                                            Publish
+                                            @break
+                                            @case(0)
+                                            Unpublish
+                                            @break
+                                            @default
+                                            -
+                                            @endswitch</td>
                                         <td>
                                             <div>
                                                 <button class="btn btn-secondary btn-sm">Edit</button>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductRegistration extends Model
@@ -31,4 +32,9 @@ class ProductRegistration extends Model
         'status',
         
     ];
+
+    public function classReg(): BelongsTo
+    {
+        return $this->belongsTo(ClassCategory::class, 'class_id', 'id');
+    }
 }
