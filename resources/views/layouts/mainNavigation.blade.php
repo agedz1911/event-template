@@ -8,12 +8,97 @@
             </span>
             <img src="images/logo-dark.png" height="32" class="logo-dark-mode" alt="">
         </a>
-        <div class="buy-button">
+        <ul class="buy-button list-inline mb-0">
+            @guest 
             <a href="/login">
                 <div class="btn btn-primary login-btn-primary">Login</div>
                 <div class="btn btn-light login-btn-light">Login</div>
             </a>
-        </div>
+            @else
+            <li class="list-inline-item mb-0">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-link text-decoration-none dropdown-toggle p-0 pe-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-search h5 text-muted"></i>
+                    </button>
+                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 py-0" style="width: 300px;">
+                        <form>
+                            <input type="text" id="text" name="name" class="form-control border bg-white" placeholder="Search...">
+                        </form>
+                    </div>
+                </div>
+            </li>
+            <li class="list-inline-item mb-0 pe-1">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart align-middle icons"></i></button>
+                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 p-4" style="width: 300px;">
+                        <div class="pb-4">
+                            TODO: list cart
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between pt-4 border-top">
+                            <h6 class="text-dark mb-0">Total($):</h6>
+                            <h6 class="text-dark mb-0">$1690</h6>
+                        </div>
+
+                        <div class="mt-3 text-center">
+                            <a href="javascript:void(0)" class="btn btn-primary me-2">View Cart</a>
+                            <a href="javascript:void(0)" class="btn btn-primary">Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-inline-item mb-0">
+                <div class="dropdown dropdown-primary">
+                    <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user align-middle icons"></i></button>
+                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 " style="width: 200px;">
+                        <small class="dropdown-item text-dark">Welcome {{Auth::user()->name}}!</small>
+                        <div class="dropdown-divider my-2 border-top"></div>
+                        <a class="dropdown-item text-dark" href="/dashboard/profile/my-profile"><i class="fa fa-user-alt align-middle me-1"></i>My Account</a>
+                        <a class="dropdown-item text-dark" href="javascript:void(0)"><i class="fa fa-edit align-middle me-1"></i> Change Password</a>
+                        <div class="dropdown-divider my-3 border-top"></div>
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item notify-item">
+                                <i class="fa fa-sign-out"></i>
+                                <span>Logout</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+            {{-- <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                <!-- item-->
+                <div class="dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome {{Auth::user()->name}}!</h6>
+                </div>
+                
+                <!-- item-->
+                <a href="/dashboard/profile/my-profile" class="dropdown-item notify-item">
+                    <i class="fa fa-user"></i>
+                    <span>My Account</span>
+                </a>
+                
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fa fa-edit"></i>
+                    <span>Change Password</span>
+                </a>
+                
+                
+                <div class="dropdown-divider"></div>
+                
+                <!-- item-->
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    
+                    <button type="submit" class="dropdown-item notify-item">
+                        <i class="fa fa-sign-out"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
+            </div> --}}
+            @endguest
+        </ul>
         <!--end login button-->
         <!-- End Logo container-->
         <div class="menu-extras">

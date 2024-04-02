@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faculty;
 use App\Models\ImportantDate;
+use App\Models\ProductRegistration;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -28,7 +29,8 @@ class MainController extends Controller
 
     public function registration()
     {
-        return view('registration');
+        $productReg= ProductRegistration::with('classReg')->get();
+        return view('registration', ['productReg' => $productReg]);
     }
 
     public function submission()

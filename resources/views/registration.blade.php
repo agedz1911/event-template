@@ -40,58 +40,170 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-10 col-12 mt-2 pt-2 ">
-                    <table class="table table-responsive table-hover table-bordered">
-                        <tr class="bg-warning text-center align-middle">
-                            <th style="width: 35%;">Category</th>
-                            <th colspan="2">Early Bird <br> Upto August 5<sup>th</sup>, 2024</th>
-                            <th colspan="2">Late / Onsite</th>
-                            <th>#</th>
-                        </tr>
-                        <tr class="align-middle text-muted">
-                            <td class="fw-bold">Specialist / Other Specialist</td>
-                            <td>IDR 1.500.000 </td>
-                            <td>USD 100</td>
-                            <td>IDR 2.000.000</td>
-                            <td>USD 150</td>
-                            <td class="text-end"><a href="https://expo.virconex-id.com/registration/aesc2024/"
-                                    class="btn btn-primary">Register Now </a></td>
-                        </tr>
-                        <tr class="align-middle text-muted">
-                            <td class="fw-bold">Resident / GP</td>
-                            <td>IDR 1.000.000 </td>
-                            <td>USD 70</td>
-                            <td>IDR 1.500.000</td>
-                            <td>USD 100</td>
-                            <td class="text-end"><a href="https://expo.virconex-id.com/registration/aesc2024/"
-                                    class="btn btn-primary">Register Now </a></td>
-                        </tr>
-
-                    </table>
+                <div class="col-lg-12">
+                    <ul class="nav nav-pills nav-justified flex-column flex-sm-row rounded" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link rounded active" id="pills-cloud-tab" data-bs-toggle="pill"
+                                href="#international" role="tab" aria-controls="international" aria-selected="false">
+                                <div class="text-center py-2">
+                                    <h6 class="mb-0">Indonesian Participant</h6>
+                                </div>
+                            </a>
+                            <!--end nav link-->
+                        </li>
+                        <!--end nav item-->
+    
+                        <li class="nav-item">
+                            <a class="nav-link rounded" id="pills-smart-tab" data-bs-toggle="pill" href="#national"
+                                role="tab" aria-controls="national" aria-selected="false">
+                                <div class="text-center py-2">
+                                    <h6 class="mb-0">Foreign Participant</h6>
+                                </div>
+                            </a>
+                            <!--end nav link-->
+                        </li>
+                        <!--end nav item-->
+    
+                        <!-- <li class="nav-item">
+                                        <a class="nav-link rounded" id="pills-apps-tab" data-bs-toggle="pill" href="#pills-apps" role="tab" aria-controls="pills-apps" aria-selected="false">
+                                            <div class="text-center py-2">
+                                                <h6 class="mb-0">Service</h6>
+                                            </div>
+                                        </a>
+                                    </li> -->
+                    </ul>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-                    <div class="card pricing-rates business-rate shadow bg-light rounded text-center border-0">
-                        <div class="card-body py-5">
-                            <h6 class="title fw-bold text-uppercase text-primary mb-4">Free</h6>
-                            <div class="d-flex justify-content-center mb-4">
-                                <span class="h4 mb-0 mt-2">$</span>
-                                <span class="price h1 mb-0">0</span>
-                                <span class="h4 align-self-end mb-1">/mo</span>
+                
+            </div>
+            <div class="row pt-2">
+                <div class="col-12">
+                    <div class="tab-content" id="pills-tabContent">
+                        
+                        <div class="tab-pane fade show active" id="international" role="tabpanel"
+                            aria-labelledby="pills-cloud-tab">
+                            <div class="row mt-4">
+                                
+                                @foreach ($productReg as $registration)
+                                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+                                    <div class="card pricing-rates business-rate shadow bg-light rounded text-center border-0">
+                                        <div class="card-body py-5">
+                                            <h6 class="title fw-bold text-uppercase text-primary mb-4">{{$registration->product_name}}</h6>
+                                            <p class="mb-0">Early Bird</p>
+                                            <div class="d-flex justify-content-center mb-4">
+                                                <span class="h4 mb-0 mt-2">IDR</span>
+                                                <span class="price h1 mb-0">{{ number_format($registration->price_idr_early, 0, ',', '.') }}</span>
+                                            </div>
+                                            <p class="mb-0">Regular Registration</p>
+                                            <div class="d-flex justify-content-center mb-4">
+                                                <span class="h4 mb-0 mt-2">IDR</span>
+                                                <span class="price h1 mb-0">{{ number_format($registration->price_idr_normal, 0, ',', '.')}}</span>
+                                            </div>
+                                            <p class="mb-0">Late / Onsite</p>
+                                            <div class="d-flex justify-content-center mb-4">
+                                                <span class="h4 mb-0 mt-2">IDR</span>
+                                                <span class="price h1 mb-0">{{ number_format($registration->price_idr_onsite, 0, ',' , '.')}}</span>
+                                            </div>
+                                            
+                                            <ul class="list-unstyled mb-0 ps-0">
+                                                <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$registration->classReg->class_name}}</li>
+                                            </ul>
+                                            <a href="javascript:void(0)" class="btn btn-primary mt-4">Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                
                             </div>
-                            
-                            <ul class="list-unstyled mb-0 ps-0">
-                                <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Full Access</li>
-                                <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Enhanced Security</li>
-                                <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Source Files</li>
-                                <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>1 Domain Free</li>
-                            </ul>
-                            <a href="javascript:void(0)" class="btn btn-primary mt-4">Buy Now</a>
                         </div>
+    
+                        <div class="tab-pane fade" id="national" role="tabpanel" aria-labelledby="pills-smart-tab">
+                            <div class="row mt-4">
+                                @foreach ($productReg as $registration)
+                                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+                                    <div class="card pricing-rates business-rate shadow bg-light rounded text-center border-0">
+                                        <div class="card-body py-5">
+                                            <h6 class="title fw-bold text-uppercase text-primary mb-4">{{$registration->product_name}}</h6>
+                                            <p class="mb-0">Early Bird</p>
+                                            <div class="d-flex justify-content-center mb-4">
+                                                <span class="h4 mb-0 mt-2">USD</span>
+                                                <span class="price h1 mb-0">{{$registration->price_usd_early}}</span>
+                                            </div>
+                                            <p class="mb-0">Regular Registration</p>
+                                            <div class="d-flex justify-content-center mb-4">
+                                                <span class="h4 mb-0 mt-2">USD</span>
+                                                <span class="price h1 mb-0">{{$registration->price_usd_normal}}</span>
+                                            </div>
+                                            <p class="mb-0">Late / Onsite</p>
+                                            <div class="d-flex justify-content-center mb-4">
+                                                <span class="h4 mb-0 mt-2">USD</span>
+                                                <span class="price h1 mb-0">{{$registration->price_usd_onsite}}</span>
+                                            </div>
+                                            
+                                            <ul class="list-unstyled mb-0 ps-0">
+                                                <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$registration->classReg->class_name}}</li>
+                                            </ul>
+                                            <a href="javascript:void(0)" class="btn btn-primary mt-4">Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        
                     </div>
-                </div><!--end col-->
+                </div>
             </div>
         </div><!--end container-->
     </section><!--end section-->
+    {{-- <div class="col-lg-10 col-12 mt-2 pt-2 ">
+        <table class="table table-responsive table-hover table-bordered">
+            <tr class="bg-warning text-center align-middle">
+                <th style="width: 35%;">Category</th>
+                <th colspan="2">Early Bird <br> Upto August 5<sup>th</sup>, 2024</th>
+                <th colspan="2">Late / Onsite</th>
+                <th>#</th>
+            </tr>
+            <tr class="align-middle text-muted">
+                <td class="fw-bold">Specialist / Other Specialist</td>
+                <td>IDR 1.500.000 </td>
+                <td>USD 100</td>
+                <td>IDR 2.000.000</td>
+                <td>USD 150</td>
+                <td class="text-end"><a href="https://expo.virconex-id.com/registration/aesc2024/"
+                        class="btn btn-primary">Register Now </a></td>
+            </tr>
+            <tr class="align-middle text-muted">
+                <td class="fw-bold">Resident / GP</td>
+                <td>IDR 1.000.000 </td>
+                <td>USD 70</td>
+                <td>IDR 1.500.000</td>
+                <td>USD 100</td>
+                <td class="text-end"><a href="https://expo.virconex-id.com/registration/aesc2024/"
+                        class="btn btn-primary">Register Now </a></td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+        <div class="card pricing-rates business-rate shadow bg-light rounded text-center border-0">
+            <div class="card-body py-5">
+                <h6 class="title fw-bold text-uppercase text-primary mb-4">Free</h6>
+                <div class="d-flex justify-content-center mb-4">
+                    <span class="h4 mb-0 mt-2">$</span>
+                    <span class="price h1 mb-0">0</span>
+                    <span class="h4 align-self-end mb-1">/mo</span>
+                </div>
+                
+                <ul class="list-unstyled mb-0 ps-0">
+                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Full Access</li>
+                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Enhanced Security</li>
+                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Source Files</li>
+                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>1 Domain Free</li>
+                </ul>
+                <a href="javascript:void(0)" class="btn btn-primary mt-4">Buy Now</a>
+            </div>
+        </div>
+    </div><!--end col--> --}}
 
     <section class="section" id="regis-info">
         <div class="container">
