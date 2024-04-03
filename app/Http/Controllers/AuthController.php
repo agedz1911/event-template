@@ -88,7 +88,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         Alert::success('Success', 'Logout successful');
-        return redirect('/');
+        return redirect('/home');
     }
 
     public function userRegister(Request $request)

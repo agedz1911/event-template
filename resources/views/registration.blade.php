@@ -76,7 +76,11 @@
                 
             </div>
             <div class="row pt-2">
+                <a class="btn btn-outline-dark" href="">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge bg-danger">{{ count((array) session('cart')) }}</span>
+                </a>
                 <div class="col-12">
+                   
                     <div class="tab-content" id="pills-tabContent">
                         
                         <div class="tab-pane fade show active" id="international" role="tabpanel"
@@ -88,17 +92,20 @@
                                     <div class="card pricing-rates business-rate shadow bg-light rounded text-center border-0">
                                         <div class="card-body py-5">
                                             <h6 class="title fw-bold text-uppercase text-primary mb-4">{{$registration->product_name}}</h6>
-                                            <p class="mb-0">Early Bird</p>
+                                            <p class="mb-0">Early Bird Up to<br>
+                                            <small> {{\Carbon\Carbon::parse($registration->end_date_early)->format(' j F Y')}}</small></p>
                                             <div class="d-flex justify-content-center mb-4">
                                                 <span class="h4 mb-0 mt-2">IDR</span>
                                                 <span class="price h1 mb-0">{{ number_format($registration->price_idr_early, 0, ',', '.') }}</span>
                                             </div>
-                                            <p class="mb-0">Regular Registration</p>
+                                            <p class="mb-0">Regular Registration <br>
+                                            <small>{{\Carbon\Carbon::parse($registration->start_date_normal)->format(' j')}} - {{\Carbon\Carbon::parse($registration->end_date_normal)->format(' j F Y')}}</small></p>
                                             <div class="d-flex justify-content-center mb-4">
                                                 <span class="h4 mb-0 mt-2">IDR</span>
                                                 <span class="price h1 mb-0">{{ number_format($registration->price_idr_normal, 0, ',', '.')}}</span>
                                             </div>
-                                            <p class="mb-0">Late / Onsite</p>
+                                            <p class="mb-0">Late / Onsite after <br>
+                                            <small>{{\Carbon\Carbon::parse($registration->start_date_onsite)->format(' j F Y')}}</small></p>
                                             <div class="d-flex justify-content-center mb-4">
                                                 <span class="h4 mb-0 mt-2">IDR</span>
                                                 <span class="price h1 mb-0">{{ number_format($registration->price_idr_onsite, 0, ',' , '.')}}</span>
@@ -107,7 +114,11 @@
                                             <ul class="list-unstyled mb-0 ps-0">
                                                 <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$registration->classReg->class_name}}</li>
                                             </ul>
-                                            <a href="javascript:void(0)" class="btn btn-primary mt-4">Buy Now</a>
+                                            <form action="{{route('add.reg.to.cart')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="product_registration_id" value="{{$registration->id}}">
+                                                <button type="submit" class="btn btn-primary">Add to cart</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -123,17 +134,20 @@
                                     <div class="card pricing-rates business-rate shadow bg-light rounded text-center border-0">
                                         <div class="card-body py-5">
                                             <h6 class="title fw-bold text-uppercase text-primary mb-4">{{$registration->product_name}}</h6>
-                                            <p class="mb-0">Early Bird</p>
+                                            <p class="mb-0">Early Bird Up to<br>
+                                                <small> {{\Carbon\Carbon::parse($registration->end_date_early)->format(' j F Y')}}</small></p>
                                             <div class="d-flex justify-content-center mb-4">
                                                 <span class="h4 mb-0 mt-2">USD</span>
                                                 <span class="price h1 mb-0">{{$registration->price_usd_early}}</span>
                                             </div>
-                                            <p class="mb-0">Regular Registration</p>
+                                            <p class="mb-0">Regular Registration <br>
+                                                <small>{{\Carbon\Carbon::parse($registration->start_date_normal)->format(' j')}} - {{\Carbon\Carbon::parse($registration->end_date_normal)->format(' j F Y')}}</small></p>
                                             <div class="d-flex justify-content-center mb-4">
                                                 <span class="h4 mb-0 mt-2">USD</span>
                                                 <span class="price h1 mb-0">{{$registration->price_usd_normal}}</span>
                                             </div>
-                                            <p class="mb-0">Late / Onsite</p>
+                                            <p class="mb-0">Late / Onsite after <br>
+                                                <small>{{\Carbon\Carbon::parse($registration->start_date_onsite)->format(' j F Y')}}</small></p>
                                             <div class="d-flex justify-content-center mb-4">
                                                 <span class="h4 mb-0 mt-2">USD</span>
                                                 <span class="price h1 mb-0">{{$registration->price_usd_onsite}}</span>
@@ -142,7 +156,11 @@
                                             <ul class="list-unstyled mb-0 ps-0">
                                                 <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$registration->classReg->class_name}}</li>
                                             </ul>
-                                            <a href="javascript:void(0)" class="btn btn-primary mt-4">Buy Now</a>
+                                            <form action="{{route('add.reg.to.cart')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="product_registration_id" value="{{$registration->id}}">
+                                                <button type="submit" class="btn btn-primary">Add to cart</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

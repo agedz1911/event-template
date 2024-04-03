@@ -27,12 +27,6 @@ class MainController extends Controller
         return view('scientificProgram');
     }
 
-    public function registration()
-    {
-        $productReg= ProductRegistration::with('classReg')->get();
-        return view('registration', ['productReg' => $productReg]);
-    }
-
     public function submission()
     {
         $countries = countries();

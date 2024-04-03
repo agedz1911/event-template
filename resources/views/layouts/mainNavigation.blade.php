@@ -15,24 +15,24 @@
                 <div class="btn btn-light login-btn-light">Login</div>
             </a>
             @else
-            <li class="list-inline-item mb-0">
-                <div class="dropdown">
-                    <button type="button" class="btn btn-link text-decoration-none dropdown-toggle p-0 pe-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-search h5 text-muted"></i>
-                    </button>
-                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 py-0" style="width: 300px;">
-                        <form>
-                            <input type="text" id="text" name="name" class="form-control border bg-white" placeholder="Search...">
-                        </form>
-                    </div>
-                </div>
-            </li>
+            
             <li class="list-inline-item mb-0 pe-1">
                 <div class="dropdown">
-                    <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart align-middle icons"></i></button>
+                    <button type="button" class="btn btn-icon btn-soft-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart align-middle icons"></i><span class="badge bg-danger">{{ count((array) session('cart')) }}</span></button>
                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 p-4" style="width: 300px;">
                         <div class="pb-4">
-                            TODO: list cart
+                            @php $total = 0 @endphp
+                            @if(session('cart'))
+                                @foreach(session('cart') as $id => $details)
+                                <div id="{{$id}}" class="d-flex align-items-center justify-content-between">
+                                    <a href="javascript:void(0)" class="d-flex align-items-center">
+                                        <h4>{{$details['name']}}</h4>
+                                        
+                                        <h6 class="text-dark mb-0">{{$details['price_idr']}}</h6>
+                                    </a>
+                                </div>
+                                @endforeach
+                            @endif
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between pt-4 border-top">
@@ -49,7 +49,7 @@
             </li>
             <li class="list-inline-item mb-0">
                 <div class="dropdown dropdown-primary">
-                    <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user align-middle icons"></i></button>
+                    <button type="button" class="btn btn-icon btn-soft-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user align-middle icons"></i></button>
                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 " style="width: 200px;">
                         <small class="dropdown-item text-dark">Welcome {{Auth::user()->name}}!</small>
                         <div class="dropdown-divider my-2 border-top"></div>
@@ -66,37 +66,6 @@
                     </div>
                 </div>
             </li>
-            {{-- <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
-                <!-- item-->
-                <div class="dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome {{Auth::user()->name}}!</h6>
-                </div>
-                
-                <!-- item-->
-                <a href="/dashboard/profile/my-profile" class="dropdown-item notify-item">
-                    <i class="fa fa-user"></i>
-                    <span>My Account</span>
-                </a>
-                
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="fa fa-edit"></i>
-                    <span>Change Password</span>
-                </a>
-                
-                
-                <div class="dropdown-divider"></div>
-                
-                <!-- item-->
-                <form action="{{route('logout')}}" method="POST">
-                    @csrf
-                    
-                    <button type="submit" class="dropdown-item notify-item">
-                        <i class="fa fa-sign-out"></i>
-                        <span>Logout</span>
-                    </button>
-                </form>
-            </div> --}}
             @endguest
         </ul>
         <!--end login button-->
