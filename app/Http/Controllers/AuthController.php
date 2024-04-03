@@ -70,7 +70,7 @@ class AuthController extends Controller
             $user = Auth::user();
             if ($user->role_id == 3) {
                 Alert::success('Success', 'Login successful');
-                return redirect()->intended('dashboard/user');
+                return redirect()->intended('/');
             } else {
                 Alert::success('Success', 'Login successful');
                 return redirect()->intended('dashboard/admin');
