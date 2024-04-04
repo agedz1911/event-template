@@ -9,37 +9,50 @@
             <img src="{{asset('assets/images/logo-dark.png')}}" height="32" class="logo-dark-mode" alt="">
         </a>
         <ul class="buy-button list-inline mb-0">
-            @guest 
+            @guest
             <a href="/login">
                 <div class="btn btn-primary login-btn-primary "><i class="fa fa-lock me-2"></i>Login</div>
                 <div class="btn btn-light login-btn-light"><i class="fa fa-lock me-2"></i>Login</div>
             </a>
             @else
-            
+
             <li class="list-inline-item mb-0 pe-1">
                 <div class="dropdown">
-                    <button type="button" class="btn btn-icon btn-soft-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart align-middle icons"></i><span class="badge bg-danger">{{ count((array) session('cart')) }}</span></button>
-                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 p-4" style="width: 300px;">
+                    <button type="button" class="btn  btn-soft-success dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><i
+                            class="fa fa-shopping-cart align-middle icons"></i><span class="badge bg-danger">{{
+                            count((array) session('cart')) }}</span></button>
+                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 p-4" style="width: 300px">
                         <div class="pb-4">
                             @php $total = 0 @endphp
                             @if(session('cart'))
-                                @foreach(session('cart') as $id => $details)
-                                <div id="{{$id}}" class="d-flex align-items-center justify-content-between">
-                                    <a href="javascript:void(0)" class="d-flex align-items-center">
-                                        <h4>{{$details['name']}}</h4>
-                                        
-                                        <h6 class="text-dark mb-0">{{$details['price_idr']}}</h6>
-                                    </a>
-                                </div>
-                                @endforeach
-                            @endif
+                            @foreach(session('cart') as $id => $details)
+                            <div id="{{$id}}" class="">
+                                @if (Auth::user()->biodata->country == 'Indonesia')
+                                <a href="" class="d-flex align-items-center justify-content-between mt-1">
+                                    <h6>{{$details['name']}}</h6>
+                                    <p class="text-dark mb-0">Rp. {{number_format($details['price_idr'], 0, ',', '.')}}</p>
+                                </a>
+                                @else
+                                <a href="javascript:void(0)" class="d-flex align-items-center justify-content-between mt-1">
+                                    <h6>{{$details['name']}}</h6>
+                                    <p class="text-dark mb-0">USD {{number_format($details['price_usd'], 0, ',', '.')}}</p>
+                                </a>
+                                    
+                                @endif
+                            </div>
+                            @endforeach
                         </div>
+                        @else
+                        <div class="text-center pb-4">
+                            <h6 class="text-dark mb-0">Cart is empty</h6>
+                        </div>
+                        @endif
 
                         <div class="d-flex align-items-center justify-content-between pt-4 border-top">
-                            <h6 class="text-dark mb-0">Total($):</h6>
-                            <h6 class="text-dark mb-0">$1690</h6>
+                            <h6 class="text-dark mb-0">Total:</h6>
+                            <h6 class="text-dark mb-0">Rp. ......</h6>
                         </div>
-
                         <div class="mt-3 text-center">
                             <a href="javascript:void(0)" class="btn btn-primary me-2">View Cart</a>
                             <a href="javascript:void(0)" class="btn btn-primary">Checkout</a>
@@ -49,12 +62,24 @@
             </li>
             <li class="list-inline-item mb-0">
                 <div class="dropdown dropdown-primary">
-                    <button type="button" class="btn btn-icon btn-soft-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user align-middle icons"></i></button>
-                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 " style="width: 200px;">
+                    <button type="button" class="btn btn-icon btn-soft-success dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                            class="fa fa-user align-middle icons"></i></button>
+                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 "
+                        >
                         <small class="dropdown-item text-dark">Welcome {{Auth::user()->name}}!</small>
                         <div class="dropdown-divider my-2 border-top"></div>
-                        <a class="dropdown-item text-dark" href="/dashboard/profile/my-profile"><i class="fa fa-user-alt align-middle me-1"></i>My Account</a>
-                        <a class="dropdown-item text-dark" href="javascript:void(0)"><i class="fa fa-edit align-middle me-1"></i> Change Password</a>
+                        @if (Auth::user()->role_id == '3')
+                        <a class="dropdown-item text-dark" href="/dashboard/user"><i
+                                class="fa fa-home align-middle me-1"></i>Dashboard</a>
+                        @else
+                        <a class="dropdown-item text-dark" href="dashboard/admin"><i
+                                class="fa fa-home align-middle me-1"></i>Dashboard</a>
+                        @endif
+                        <a class="dropdown-item text-dark" href="/dashboard/profile/my-profile"><i
+                                class="fa fa-user-alt align-middle me-1"></i>My Account</a>
+                        <a class="dropdown-item text-dark" href="javascript:void(0)"><i
+                                class="fa fa-edit align-middle me-1"></i> Change Password</a>
                         <div class="dropdown-divider my-3 border-top"></div>
                         <form action="{{route('logout')}}" method="POST">
                             @csrf
@@ -93,7 +118,8 @@
                     <a href="/congress-information/">Congress Information</a><span class="menu-arrow"></span>
                     <ul class="submenu">
                         <!-- <li><a href="/congress-info/#welcome-message" class="sub-menu-item">Welcome Message</a></li> -->
-                        <li><a href="/congress-information/#committee" class="sub-menu-item">Organizing Committee</a></li>
+                        <li><a href="/congress-information/#committee" class="sub-menu-item">Organizing Committee</a>
+                        </li>
                         <li><a href="/congress-information/#faculties" class="sub-menu-item">Faculties</a></li>
                         <li><a href="javascript:void(0)" class="sub-menu-item">Venue</a></li>
                     </ul>
@@ -130,14 +156,15 @@
                     </ul>
                 </li>
 
-            </ul><!--end navigation menu-->
+            </ul>
+            <!--end navigation menu-->
 
             <!--end login button-->
         </div><!--end navigation-->
     </div><!--end container-->
-<!--end header-->
+</div><!--end header-->
 
-{{-- <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+<!-- <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
     <div class="container">
         <a class="navbar-brand" href="#">
             <img src="{{asset('assets/images/logo-dark.png')}}" class="l-dark" height="32" alt="">
@@ -170,4 +197,4 @@
             </form>
         </div>
     </div>
-</nav> --}}
+</nav> -->

@@ -2,13 +2,13 @@
     <!-- Brand Logo -->
     <div class="logo-box">
         <!-- Brand Logo Light -->
-        <a href="javascript:void(0)" class="logo-light">
+        <a href="/" class="logo-light">
             <img src="{{asset('assets/images/logo-dark.png')}}" alt="logo" class="logo-lg" height="28">
             <img src="{{asset('assets/images/logo-dark.png')}}" alt="small logo" class="logo-sm" height="28">
         </a>
 
         <!-- Brand Logo Dark -->
-        <a href="javascript:void(0)" class="logo-dark">
+        <a href="/" class="logo-dark">
             <img src="{{asset('assets/images/logo-dark.png')}}" alt="dark logo" class="logo-lg" height="28">
             <img src="{{asset('assets/images/logo-dark.png')}}" alt="small logo" class="logo-sm" height="28">
         </a>
