@@ -3,34 +3,37 @@
 @section('title', 'Abstract')
 
 @section('content')
-    <section class="bg-half d-table w-100" style="background: url('{{ asset('assets/images/aboutus.png') }}') center center;">
-        <div class="bg-overlay"></div>
+    <section class="bg-half d-table w-100" style="background: url('{{ asset('assets/images/landing/aboutus.png') }}') bottom right;">
+        <div class="bg-overlay bg-gradient-red-blue" style="opacity: 0.8;"></div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12 text-center">
                     <div class="page-next-level title-heading">
-                        <h3 class="title-dark text-primary"> Congress Information </h3>
-                        <p class="text-dark para-desc mb-0 mx-auto"> Organizing Committee, Faculties, General Information
-                            <span class="text-primary">AESC 2024</span>
-                        </p>
+                        <h3 class="title-dark text-white"> Abstract </h3>
+                        <p class="text-white-50 para-desc mb-0 mx-auto"> Abstract Submission, Guideline for Abstract <span
+                                class="text-white fw-bold">INACHD</span></p>
                         <div class="page-next">
-                            <nav aria-label="breadcrumb" class="d-inline-block bg-primary rounded px-4 py-2">
+                            <nav aria-label="breadcrumb" class="d-inline-block bg-light rounded" >
                                 <ul class="breadcrumb rounded shadow mb-0">
-                                    <li class="breadcrumb-item"><a href="#">AESC</a></li>
+                                    <li class="breadcrumb-item"><a href="#">INACHD</a></li>
                                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item text-dark" aria-current="page">Congress Information</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Abstract</li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                </div>
-                <!--end col-->
-            </div>
-            <!--end row-->
+                </div><!--end col-->
+            </div><!--end row-->
         </div>
         <!--end container-->
     </section>
-    <!--end section-->
+    <div class="position-relative">
+        <div class="shape overflow-hidden text-white">
+            <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </div>
 
     <section class="section" id="guideline">
         <div class="container">

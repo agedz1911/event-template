@@ -1481,7 +1481,7 @@ button:not(:disabled) {
 
 .accordion .accordion-item .accordion-button.collapsed {
   background-color: #e7f1ff;
-  color: #fff !important;
+  /* color: #fff !important; */
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -2787,7 +2787,7 @@ p {
 }
 
 .bg-gradient-blue-red {
-  background-image: url(/images/bg-4.png ), linear-gradient(40deg, #17498a, #db2727);
+  background-image: url(../images/bg-4.png ), linear-gradient(40deg, #17498a, #db2727);
 }
 
 .bg-gradient-red-blue {

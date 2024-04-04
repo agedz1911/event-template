@@ -27,6 +27,15 @@ class CartRegistrationController extends Controller
         //         'quantity' => 1,
         //     ]
         // ]]);
+        if (!$request->user()) {
+            Alert::warning('Missing biodata', 'Please Sign in first for Register');
+            return redirect()->route('login');
+        }
+        $user = Auth::user();
+        if (!$user->biodata || $user->biodata->country) {
+            Alert::warning('Missing biodata', 'Please fill in your biodata before Registration.',);
+            return redirect('/dashboard/profile/my-profile');
+        }
         $cart = session()->get('cart', []);
         if (isset($cart[$productRegistrationId])) {
             $cart[$productRegistrationId]['quantity']++;

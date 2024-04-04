@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="bg-half-260 d-table w-100" style="background-image: url('/images/comingsoon.jpg');">
+<section class="bg-half-260 d-table w-100" style="background-image: url('{{asset('assets/images/comingsoon.jpg')}}');">
     <div class="bg-overlay bg-gradient-red-blue" style="opacity: 0.8;"></div>
     <div class="container">
         <div class="row align-items-center">
