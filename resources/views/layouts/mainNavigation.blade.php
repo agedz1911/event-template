@@ -1,18 +1,18 @@
-<div id="topnav" class="defaultscroll sticky-top">
+
     <div class="container">
         <!-- Logo container-->
         <a class="logo" href="/">
             <span class="logo-light-mode">
-                <img src="{{asset('assets/images/logo-dark.png')}}" class="l-dark" height="32" alt="">
+                <img src="{{asset('assets/images/logo-light.png')}}" class="l-dark" height="32" alt="">
                 <img src="{{asset('assets/images/logo-dark.png')}}" class="l-light" height="32" alt="">
             </span>
-            <img src="images/logo-dark.png" height="32" class="logo-dark-mode" alt="">
+            <img src="{{asset('assets/images/logo-dark.png')}}" height="32" class="logo-dark-mode" alt="">
         </a>
         <ul class="buy-button list-inline mb-0">
             @guest 
             <a href="/login">
-                <div class="btn btn-primary login-btn-primary">Login</div>
-                <div class="btn btn-light login-btn-light">Login</div>
+                <div class="btn btn-primary login-btn-primary "><i class="fa fa-lock me-2"></i>Login</div>
+                <div class="btn btn-light login-btn-light"><i class="fa fa-lock me-2"></i>Login</div>
             </a>
             @else
             
@@ -135,7 +135,7 @@
             <!--end login button-->
         </div><!--end navigation-->
     </div><!--end container-->
-</div><!--end header-->
+<!--end header-->
 
 {{-- <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
     <div class="container">
