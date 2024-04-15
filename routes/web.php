@@ -34,9 +34,8 @@ Route::post('/submission', [AbstractSubmissionController::class, 'storeAbstract'
 
 Route::get('/registration', [CartRegistrationController::class, 'index']);
 Route::post('/registration', [CartRegistrationController::class, 'addProductRegtoCart'])->name('add.reg.to.cart');
-// Route::get('/dashboard/admin', function () {
-//     return view('dashboard.admin.home');
-// });
+Route::get('remove-reg-from-cart/{id}', [CartRegistrationController::class, 'removeRegistrationFromCart'])->name('remove.reg.from.cart');
+
 Route::prefix('/dashboard/admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->middleware('auth', 'verified', 'role');
     Route::get('/important-dates', [AdminDashboardController::class, 'importantDates'])->middleware('auth', 'verified', 'role');

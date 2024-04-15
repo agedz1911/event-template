@@ -39,6 +39,7 @@
 
 
     @yield('scripts')
+    
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/tiny-slider.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/tobii.min.js') }}"></script> --}}

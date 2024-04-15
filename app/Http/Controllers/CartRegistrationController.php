@@ -19,20 +19,13 @@ class CartRegistrationController extends Controller
     {
         $productRegistrationId = $request->input('product_registration_id');
         $product = ProductRegistration::findOrFail($productRegistrationId);
-        // session(['cart' => [
-        //     $productRegistrationId => [
-        //         'name' => $product->product_name,
-        //         'price_idr' => $product->price_idr_early,
-        //         'price_usd' => $product->price_usd_early,
-        //         'quantity' => 1,
-        //     ]
-        // ]]);
+
         if (!$request->user()) {
             Alert::warning('Missing biodata', 'Please Sign in first for Register');
             return redirect()->route('login');
         }
         $user = Auth::user();
-        if (!$user->biodata || $user->biodata->country) {
+        if (!$user->biodata || !$user->biodata->country) {
             Alert::warning('Missing biodata', 'Please fill in your biodata before Registration.',);
             return redirect('/dashboard/profile/my-profile');
         }
@@ -50,5 +43,17 @@ class CartRegistrationController extends Controller
         session()->put('cart', $cart);
         Alert::success('success', 'Product registration added to the cart.');
         return redirect('/registration');
+    }
+
+    public function removeRegistrationFromCart($id)
+    {
+        $cart = session()->get('cart');
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+        }
+        Alert::success('success', 'Product registration removed form cart.');
+        // toast('Product registration removed form cart.','success');
+        return redirect()->back();
     }
 }
